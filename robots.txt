@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aslanemir3458-a11y.github.io/zeynepnazfizik/sitemap.xml
