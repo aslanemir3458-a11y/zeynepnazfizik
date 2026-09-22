@@ -2,65 +2,75 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <meta name="google-site-verification" content="tSFeMDuQsPjZvU7mMrh-wfM8nh2TYh7pd31V-oBb5Cc">
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Zeynep Naz Bilgütay ile online TYT, AYT ve lise fizik dersleri. Boğaziçi Üniversitesi İngilizce Fizik öğrencisinden kişiye özel online fizik eğitimi.">
-  <meta name="keywords" content="Zeynep Naz Fizik, Zeynep Naz Bilgütay, online fizik dersi, TYT fizik, AYT fizik, fizik özel ders, lise fizik, online özel ders">
+  <title>ZeynepNazFizik | Online Fizik ve Matematik Dersleri</title>
+
+  <meta
+    name="description"
+    content="Zeynep Naz Bilgütay ile ortaokul ve lise matematik, fizik, TYT ve AYT fizik online dersleri. Fizik Öğretmenliği (İngilizce) öğrencisinden kişiye özel online eğitim."
+  >
+
+  <meta
+    name="keywords"
+    content="Zeynep Naz Fizik, Zeynep Naz Bilgütay, online fizik dersi, online matematik dersi, ortaokul matematik, ortaokul fizik, lise matematik, lise fizik, TYT fizik, AYT fizik, özel ders"
+  >
+
   <meta name="author" content="Zeynep Naz Bilgütay">
 
-  <meta property="og:title" content="Zeynep Naz Bilgütay | Online Fizik Dersleri">
-  <meta property="og:description" content="TYT, AYT ve lise öğrencileri için online fizik dersleri.">
+  <meta property="og:title" content="ZeynepNazFizik | Online Fizik ve Matematik Dersleri">
+  <meta
+    property="og:description"
+    content="Ortaokul ve lise matematik, fizik ile TYT ve AYT fizik online dersleri."
+  >
   <meta property="og:type" content="website">
 
-  <title>Zeynep Naz Bilgütay | Online Fizik Dersleri | TYT AYT Fizik</title>
-
   <style>
+
     :root {
+      --bg: #faf7ff;
+      --bg2: #f3edff;
+      --card: rgba(255,255,255,0.78);
+      --text: #241936;
+      --muted: #6f6680;
       --primary: #8b5cf6;
       --primary-dark: #6d28d9;
-      --secondary: #c026d3;
-      --accent: #a78bfa;
+      --secondary: #c084fc;
+      --border: rgba(139,92,246,0.18);
+      --shadow: 0 20px 60px rgba(91,33,182,0.12);
+    }
 
-      --bg: #faf8ff;
-      --card: #ffffff;
-      --text: #21182b;
-      --muted: #6b6174;
-      --border: #eadffd;
-
-      --dark-bg: #10091c;
-      --dark-card: #1b102b;
-      --dark-text: #f5efff;
-      --dark-muted: #b9accb;
-      --dark-border: #35214d;
-
-      --shadow: 0 20px 60px rgba(91, 33, 182, 0.12);
+    body.dark {
+      --bg: #100c18;
+      --bg2: #171020;
+      --card: rgba(29,22,42,0.84);
+      --text: #f7f1ff;
+      --muted: #b9acc9;
+      --border: rgba(192,132,252,0.18);
+      --shadow: 0 20px 60px rgba(0,0,0,0.3);
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
     body {
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg);
+      font-family: Inter, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(139,92,246,.08), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(192,132,252,.08), transparent 30%),
+        var(--bg);
       color: var(--text);
-      line-height: 1.6;
       overflow-x: hidden;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
-
-    body.dark {
-      --bg: var(--dark-bg);
-      --card: var(--dark-card);
-      --text: var(--dark-text);
-      --muted: var(--dark-muted);
-      --border: var(--dark-border);
-      --shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      transition: background .3s, color .3s;
     }
 
     a {
@@ -68,948 +78,537 @@
       text-decoration: none;
     }
 
-    button {
-      font: inherit;
+    /* =========================
+       FORMÜLLER
+    ========================== */
+
+    .formula {
+      position: fixed;
+      color: rgba(139,92,246,.11);
+      font-size: 24px;
+      font-weight: 700;
+      pointer-events: none;
+      z-index: -1;
+      animation: float 12s ease-in-out infinite;
+      user-select: none;
     }
 
-    .container {
-      width: min(1120px, calc(100% - 40px));
-      margin: auto;
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-30px) rotate(4deg);
+      }
     }
 
     /* =========================
-       NAVBAR
-    ========================= */
+       HEADER
+    ========================== */
 
-    nav {
+    header {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      height: 74px;
       z-index: 1000;
-      background: rgba(250, 248, 255, 0.82);
+      padding: 18px 5%;
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid rgba(139, 92, 246, 0.1);
-      transition: 0.3s;
+      background: rgba(250,247,255,.72);
+      border-bottom: 1px solid var(--border);
     }
 
-    body.dark nav {
-      background: rgba(16, 9, 28, 0.82);
-      border-bottom-color: rgba(167, 139, 250, 0.1);
+    body.dark header {
+      background: rgba(16,12,24,.75);
     }
 
-    .nav-inner {
-      height: 100%;
+    nav {
+      max-width: 1200px;
+      margin: auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 23px;
       font-weight: 900;
-      letter-spacing: -0.5px;
-    }
-
-    .logo span {
       color: var(--primary);
     }
 
-    .nav-links {
+    .nav-buttons {
       display: flex;
+      gap: 10px;
       align-items: center;
-      gap: 28px;
     }
 
-    .nav-links a {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--muted);
-      transition: 0.2s;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-
-    .theme-btn {
-      width: 40px;
-      height: 40px;
+    .icon-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
       border: 1px solid var(--border);
       background: var(--card);
       color: var(--text);
-      border-radius: 12px;
       cursor: pointer;
-      transition: 0.2s;
+      font-size: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: .25s;
     }
 
-    .theme-btn:hover {
+    .icon-btn:hover {
       transform: translateY(-2px);
       border-color: var(--primary);
     }
 
     /* =========================
        HERO
-    ========================= */
+    ========================== */
 
     .hero {
-      min-height: 780px;
-      padding-top: 150px;
-      padding-bottom: 90px;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      width: 700px;
-      height: 700px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(139, 92, 246, 0.16),
-        transparent 68%
-      );
-      top: -280px;
-      left: -220px;
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      background: radial-gradient(
-        circle,
-        rgba(192, 38, 211, 0.12),
-        transparent 68%
-      );
-      bottom: -300px;
-      right: -200px;
-      pointer-events: none;
-    }
-
-    .hero-grid {
-      position: relative;
-      z-index: 5;
+      min-height: 100vh;
+      max-width: 1200px;
+      margin: auto;
+      padding: 150px 5% 90px;
       display: grid;
-      grid-template-columns: 1.05fr 0.95fr;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 50px;
       align-items: center;
-      gap: 60px;
     }
 
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.1);
+    .badge {
+      display: inline-block;
+      padding: 9px 15px;
+      border-radius: 30px;
+      background: rgba(139,92,246,.1);
       color: var(--primary);
-      font-size: 0.82rem;
-      font-weight: 800;
-      margin-bottom: 22px;
-      border: 1px solid rgba(139, 92, 246, 0.15);
+      font-weight: 700;
+      margin-bottom: 20px;
     }
 
-    .hero-badge::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      box-shadow: 0 0 12px rgba(34, 197, 94, 0.8);
+    h1 {
+      font-size: clamp(44px, 6vw, 76px);
+      line-height: .98;
+      margin-bottom: 24px;
+      letter-spacing: -3px;
     }
 
-    .hero h1 {
-      font-size: clamp(3rem, 6vw, 5.3rem);
-      line-height: 0.98;
-      letter-spacing: -4px;
-      font-weight: 950;
-      margin-bottom: 28px;
-    }
-
-    .hero h1 span {
+    h1 span {
       color: var(--primary);
-      background: linear-gradient(
-        120deg,
-        var(--primary),
-        var(--secondary)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
     }
 
-    .hero-text {
+    .hero p {
+      font-size: 19px;
       color: var(--muted);
-      max-width: 610px;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      margin-bottom: 32px;
+      line-height: 1.7;
+      max-width: 680px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 13px;
       flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
     }
 
     .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      gap: 9px;
       padding: 14px 21px;
       border-radius: 14px;
       font-weight: 800;
-      font-size: 0.95rem;
-      border: 1px solid transparent;
-      transition: 0.25s;
-      cursor: pointer;
+      border: 1px solid var(--border);
+      display: inline-block;
+      transition: .25s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
     .btn-primary {
+      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
       color: white;
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
-      box-shadow: 0 14px 30px rgba(139, 92, 246, 0.25);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 18px 40px rgba(139, 92, 246, 0.35);
+      box-shadow: 0 12px 30px rgba(124,58,237,.25);
     }
 
     .btn-secondary {
       background: var(--card);
-      border-color: var(--border);
-      color: var(--text);
-    }
-
-    .btn-secondary:hover {
-      transform: translateY(-3px);
-      border-color: var(--primary);
     }
 
     /* =========================
-       PHYSICS FORMULAS
-    ========================= */
-
-    .formulas {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-      z-index: 1;
-      opacity: 0.18;
-    }
-
-    .formula {
-      position: absolute;
-      color: var(--primary);
-      white-space: nowrap;
-      font-weight: 900;
-      font-family: Georgia, "Times New Roman", serif;
-      filter: drop-shadow(0 0 12px rgba(139, 92, 246, 0.3));
-      animation: physicsFloat var(--speed) infinite ease-in-out;
-    }
-
-    .formula::after {
-      content: "";
-      position: absolute;
-      width: 90px;
-      height: 1px;
-      background: linear-gradient(
-        90deg,
-        transparent,
-        var(--primary),
-        transparent
-      );
-      left: 50%;
-      top: 125%;
-      transform: translateX(-50%);
-      opacity: 0.35;
-    }
-
-    .f1 { left: 3%; top: 12%; font-size: 1.7rem; --speed: 17s; }
-    .f2 { left: 25%; top: 9%; font-size: 1.35rem; --speed: 21s; }
-    .f3 { right: 5%; top: 14%; font-size: 1.9rem; --speed: 18s; }
-    .f4 { left: 13%; top: 30%; font-size: 1.2rem; --speed: 25s; }
-    .f5 { left: 40%; top: 23%; font-size: 1.5rem; --speed: 19s; }
-    .f6 { right: 20%; top: 32%; font-size: 1.25rem; --speed: 23s; }
-    .f7 { left: 2%; top: 54%; font-size: 1.5rem; --speed: 22s; }
-    .f8 { right: 7%; top: 52%; font-size: 1.8rem; --speed: 20s; }
-    .f9 { left: 27%; top: 67%; font-size: 1.15rem; --speed: 24s; }
-    .f10 { right: 28%; top: 65%; font-size: 1.45rem; --speed: 18s; }
-    .f11 { left: 7%; top: 82%; font-size: 1.2rem; --speed: 27s; }
-    .f12 { right: 4%; top: 79%; font-size: 1.6rem; --speed: 21s; }
-    .f13 { left: 43%; top: 83%; font-size: 1.2rem; --speed: 26s; }
-    .f14 { left: 57%; top: 12%; font-size: 1rem; --speed: 23s; }
-    .f15 { left: 74%; top: 23%; font-size: 1.25rem; --speed: 20s; }
-    .f16 { left: 33%; top: 42%; font-size: 1.1rem; --speed: 24s; }
-    .f17 { right: 36%; top: 50%; font-size: 1.1rem; --speed: 29s; }
-    .f18 { left: 17%; top: 72%; font-size: 1.35rem; --speed: 22s; }
-    .f19 { right: 14%; top: 70%; font-size: 1.1rem; --speed: 25s; }
-    .f20 { left: 66%; top: 87%; font-size: 1.2rem; --speed: 19s; }
-
-    @keyframes physicsFloat {
-      0% {
-        transform: translate3d(0, 25px, 0) rotate(-5deg);
-        opacity: 0.25;
-      }
-
-      25% {
-        transform: translate3d(28px, -15px, 0) rotate(2deg);
-        opacity: 0.75;
-      }
-
-      50% {
-        transform: translate3d(-18px, -48px, 0) rotate(5deg);
-        opacity: 1;
-      }
-
-      75% {
-        transform: translate3d(-34px, -10px, 0) rotate(-2deg);
-        opacity: 0.55;
-      }
-
-      100% {
-        transform: translate3d(0, 25px, 0) rotate(-5deg);
-        opacity: 0.25;
-      }
-    }
-
-    /* =========================
-       PARTICLES
-    ========================= */
-
-    .particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: var(--primary);
-      border-radius: 50%;
-      box-shadow: 0 0 18px var(--primary);
-      animation: particle 6s infinite ease-in-out;
-    }
-
-    .p1 { left: 18%; top: 22%; animation-delay: 0s; }
-    .p2 { left: 45%; top: 17%; animation-delay: 1.2s; }
-    .p3 { left: 77%; top: 35%; animation-delay: 2.2s; }
-    .p4 { left: 52%; top: 61%; animation-delay: 3s; }
-    .p5 { left: 86%; top: 72%; animation-delay: 1.7s; }
-    .p6 { left: 28%; top: 89%; animation-delay: 4s; }
-
-    @keyframes particle {
-      0%, 100% {
-        transform: translate(0, 0) scale(0.7);
-        opacity: 0.2;
-      }
-
-      50% {
-        transform: translate(25px, -35px) scale(1.4);
-        opacity: 1;
-      }
-    }
-
-    /* =========================
-       HERO VISUAL
-    ========================= */
-
-    .hero-visual-wrap {
-      display: flex;
-      justify-content: center;
-      transition: transform 0.15s ease-out;
-    }
-
-    .hero-visual {
-      position: relative;
-      width: min(430px, 90vw);
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background:
-        radial-gradient(
-          circle at center,
-          rgba(139, 92, 246, 0.3),
-          rgba(139, 92, 246, 0.06) 42%,
-          transparent 70%
-        );
-    }
+       ORBIT
+    ========================== */
 
     .orbit {
-      position: absolute;
-      border: 1px solid rgba(139, 92, 246, 0.32);
+      width: min(400px,80vw);
+      height: min(400px,80vw);
+      margin: auto;
+      border: 1px solid rgba(139,92,246,.25);
       border-radius: 50%;
-      inset: 12%;
-      animation: spin 15s linear infinite;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow);
+      animation: orbitFloat 5s ease-in-out infinite;
     }
 
-    .orbit.two {
-      inset: 24%;
-      animation-duration: 11s;
-      animation-direction: reverse;
+    @keyframes orbitFloat {
+      0%,100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
     }
 
-    .orbit.three {
-      inset: 36%;
-      animation-duration: 8s;
+    .orbit::before,
+    .orbit::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(192,132,252,.35);
+      border-radius: 50%;
     }
 
     .orbit::before {
-      content: "";
-      position: absolute;
-      width: 12px;
-      height: 12px;
+      width: 70%;
+      height: 40%;
+      transform: rotate(35deg);
+    }
+
+    .orbit::after {
+      width: 40%;
+      height: 70%;
+      transform: rotate(-35deg);
+    }
+
+    .atom {
+      width: 110px;
+      height: 110px;
       border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 25px var(--primary);
-      top: -6px;
-      left: 50%;
-    }
-
-    .orbit.two::before {
-      background: var(--secondary);
-      box-shadow: 0 0 25px var(--secondary);
-      right: 8%;
-      left: auto;
-      top: 50%;
-    }
-
-    .orbit.three::before {
-      background: var(--accent);
-      box-shadow: 0 0 25px var(--accent);
-      top: auto;
-      bottom: -6px;
-      left: 50%;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    .atom-core {
-      position: absolute;
-      inset: 42%;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(
-        135deg,
-        var(--primary),
-        var(--secondary)
-      );
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      display: flex;
+      justify-content: center;
+      align-items: center;
       color: white;
-      font-size: 2rem;
+      font-size: 55px;
       font-weight: 900;
-      box-shadow:
-        0 0 45px rgba(139, 92, 246, 0.45),
-        0 0 100px rgba(192, 38, 211, 0.18);
-      z-index: 3;
-    }
-
-    .stat-card {
-      position: absolute;
-      background: rgba(255, 255, 255, 0.75);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(139, 92, 246, 0.15);
-      box-shadow: var(--shadow);
-      padding: 12px 16px;
-      border-radius: 15px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--text);
-      z-index: 5;
-    }
-
-    body.dark .stat-card {
-      background: rgba(27, 16, 43, 0.75);
-    }
-
-    .stat1 {
-      left: 0;
-      top: 18%;
-    }
-
-    .stat2 {
-      right: -4%;
-      top: 45%;
-    }
-
-    .stat3 {
-      left: 10%;
-      bottom: 9%;
+      box-shadow: 0 0 60px rgba(139,92,246,.45);
+      z-index: 2;
     }
 
     /* =========================
-       GENERAL SECTIONS
-    ========================= */
+       GENEL SECTION
+    ========================== */
 
-    section:not(.hero) {
-      padding: 100px 0;
+    section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 90px 5%;
     }
 
-    .section-head {
+    .section-title {
       text-align: center;
+      font-size: 40px;
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--muted);
       max-width: 700px;
-      margin: 0 auto 50px;
-    }
-
-    .eyebrow {
-      color: var(--primary);
-      font-size: 0.78rem;
-      font-weight: 900;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .section-head h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 16px;
-    }
-
-    .section-head p {
-      color: var(--muted);
-      font-size: 1rem;
-    }
-
-    /* =========================
-       WHY
-    ========================= */
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .feature-card {
-      padding: 28px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      box-shadow: var(--shadow);
-      transition: 0.3s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(139, 92, 246, 0.4);
-    }
-
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      display: grid;
-      place-items: center;
-      background: rgba(139, 92, 246, 0.1);
-      border-radius: 14px;
-      font-size: 1.35rem;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3 {
-      margin-bottom: 9px;
-      font-size: 1.08rem;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 0.9rem;
+      margin: 0 auto 45px;
       line-height: 1.7;
     }
 
     /* =========================
-       LESSONS
-    ========================= */
+       NEDEN BÖLÜMÜ
+    ========================== */
 
-    .lessons {
-      background: rgba(139, 92, 246, 0.035);
-    }
-
-    .tabs {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-bottom: 35px;
-    }
-
-    .tab {
-      padding: 11px 18px;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--muted);
-      cursor: pointer;
-      font-weight: 800;
-      transition: 0.2s;
-    }
-
-    .tab.active,
-    .tab:hover {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: white;
-    }
-
-    .lesson-content {
-      display: none;
-      animation: fadeIn 0.35s ease;
-    }
-
-    .lesson-content.active {
-      display: block;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .topic-grid {
+    .cards {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 13px;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
     }
 
-    .topic {
-      padding: 17px 18px;
-      border-radius: 15px;
-      background: var(--card);
+    .card {
+      padding: 30px;
       border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 0.91rem;
-      transition: 0.2s;
+      border-radius: 24px;
+      background: var(--card);
+      box-shadow: var(--shadow);
+      transition: .25s;
     }
 
-    .topic:hover {
-      transform: translateX(4px);
-      border-color: var(--primary);
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card-icon {
+      font-size: 35px;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: var(--muted);
+      line-height: 1.7;
     }
 
     /* =========================
-       1 MINUTE PHYSICS
-    ========================= */
+       DERSLER
+    ========================== */
+
+    .lesson-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .lesson-card {
+      position: relative;
+      padding: 30px;
+      min-height: 250px;
+      border-radius: 25px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transition: .25s;
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-7px);
+    }
+
+    .lesson-card::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      right: -60px;
+      bottom: -60px;
+      background: rgba(139,92,246,.09);
+      border-radius: 50%;
+    }
+
+    .lesson-icon {
+      font-size: 42px;
+      margin-bottom: 18px;
+    }
+
+    .lesson-card h3 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .lesson-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 17px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 11px;
+      border-radius: 10px;
+      background: rgba(139,92,246,.1);
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    /* =========================
+       EĞİTİM BİLGİSİ
+    ========================== */
+
+    .about-box {
+      max-width: 900px;
+      margin: auto;
+      padding: 45px;
+      border-radius: 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .about-box h3 {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+
+    .about-box .university {
+      color: var(--primary);
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .about-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    /* =========================
+       FİZİKTEN 1 DAKİKA
+    ========================== */
 
     .mini-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
     }
 
     .mini-card {
-      position: relative;
-      overflow: hidden;
+      padding: 27px;
+      border-radius: 22px;
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 25px;
       box-shadow: var(--shadow);
-      transition: 0.3s;
     }
 
-    .mini-card:hover {
-      transform: translateY(-5px);
-    }
-
-    .mini-card::after {
-      content: "";
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      right: -45px;
-      bottom: -45px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.08);
-    }
-
-    .mini-number {
-      font-size: 0.75rem;
-      font-weight: 900;
+    .mini-card .formula-big {
+      font-size: 29px;
       color: var(--primary);
-      margin-bottom: 12px;
+      font-weight: 900;
+      margin-bottom: 15px;
     }
 
     .mini-card h3 {
       margin-bottom: 9px;
-      font-size: 1.08rem;
     }
 
     .mini-card p {
       color: var(--muted);
-      font-size: 0.88rem;
-      line-height: 1.65;
-      margin-bottom: 18px;
-    }
-
-    .equation {
-      display: inline-block;
-      padding: 9px 13px;
-      border-radius: 10px;
-      background: rgba(139, 92, 246, 0.09);
-      color: var(--primary);
-      font-family: Georgia, serif;
-      font-size: 1rem;
-      font-weight: 900;
+      line-height: 1.7;
     }
 
     /* =========================
-       PROCESS
-    ========================= */
+       NASIL İLERLİYORUZ
+    ========================== */
 
-    .process {
+    .steps {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
     }
 
     .step {
-      position: relative;
-      padding: 28px 22px;
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      background: var(--card);
+      text-align: center;
+      padding: 25px 18px;
     }
 
     .step-number {
-      font-size: 0.75rem;
-      color: var(--primary);
+      width: 55px;
+      height: 55px;
+      margin: 0 auto 15px;
+      border-radius: 50%;
+      background: linear-gradient(135deg,var(--primary),var(--secondary));
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 21px;
       font-weight: 900;
-      letter-spacing: 1px;
-      margin-bottom: 16px;
     }
 
     .step h3 {
-      margin-bottom: 8px;
+      margin-bottom: 9px;
     }
 
     .step p {
       color: var(--muted);
-      font-size: 0.87rem;
-    }
-
-    /* =========================
-       ABOUT
-    ========================= */
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 0.8fr 1.2fr;
-      gap: 60px;
-      align-items: center;
-    }
-
-    .profile-card {
-      position: relative;
-      aspect-ratio: 1;
-      border-radius: 30px;
-      background:
-        radial-gradient(
-          circle at 30% 20%,
-          rgba(255,255,255,0.25),
-          transparent 30%
-        ),
-        linear-gradient(
-          145deg,
-          var(--primary),
-          var(--secondary)
-        );
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      box-shadow: 0 30px 70px rgba(139, 92, 246, 0.25);
-    }
-
-    .profile-initial {
-      font-size: 7rem;
-      font-weight: 950;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: -8px;
-    }
-
-    .profile-label {
-      position: absolute;
-      bottom: 22px;
-      left: 22px;
-      right: 22px;
-      padding: 14px 16px;
-      background: rgba(0,0,0,0.2);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: white;
-      border-radius: 15px;
-      font-weight: 800;
-    }
-
-    .about-content h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 20px;
-    }
-
-    .about-content > p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 22px;
-    }
-
-    .about-list {
-      display: grid;
-      gap: 12px;
-    }
-
-    .about-list div {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-    }
-
-    .about-list span {
-      width: 25px;
-      height: 25px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: rgba(139,92,246,0.12);
-      color: var(--primary);
-      font-size: 0.75rem;
+      line-height: 1.6;
+      font-size: 15px;
     }
 
     /* =========================
        CTA
-    ========================= */
+    ========================== */
 
     .cta {
-      padding: 0 0 100px !important;
-    }
-
-    .cta-box {
-      position: relative;
-      overflow: hidden;
-      padding: 65px 50px;
-      border-radius: 30px;
+      background: linear-gradient(135deg,#7c3aed,#a855f7);
       color: white;
-      background:
-        radial-gradient(
-          circle at 90% 10%,
-          rgba(255,255,255,0.18),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #7c3aed,
-          #a21caf
-        );
-      box-shadow: 0 30px 70px rgba(139, 92, 246, 0.2);
+      border-radius: 32px;
+      padding: 60px 30px;
+      text-align: center;
+      margin-bottom: 70px;
+      box-shadow: 0 25px 70px rgba(124,58,237,.25);
     }
 
-    .cta-box h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -2px;
+    .cta h2 {
+      font-size: 35px;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      margin: 0 auto 27px;
       max-width: 650px;
-      margin-bottom: 16px;
-    }
-
-    .cta-box p {
-      opacity: 0.85;
-      max-width: 600px;
-      margin-bottom: 25px;
-    }
-
-    .cta-box .btn {
-      background: white;
-      color: #6d28d9;
+      line-height: 1.7;
+      opacity: .92;
     }
 
     /* =========================
-       CONTACT
-    ========================= */
+       İLETİŞİM
+    ========================== */
 
     .contact-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+      max-width: 900px;
+      margin: auto;
     }
 
     .contact-card {
-      padding: 25px;
-      border-radius: 20px;
+      padding: 30px;
+      border-radius: 24px;
       background: var(--card);
       border: 1px solid var(--border);
-      transition: 0.25s;
+      box-shadow: var(--shadow);
+      text-align: center;
     }
 
-    .contact-card:hover {
-      transform: translateY(-4px);
-      border-color: var(--primary);
-    }
-
-    .contact-icon {
-      font-size: 1.4rem;
+    .contact-card .icon {
+      font-size: 35px;
       margin-bottom: 13px;
     }
 
     .contact-card h3 {
-      margin-bottom: 5px;
+      margin-bottom: 9px;
     }
 
     .contact-card p {
       color: var(--muted);
-      font-size: 0.87rem;
+      line-height: 1.6;
       word-break: break-word;
     }
 
     /* =========================
        FOOTER
-    ========================= */
+    ========================== */
 
     footer {
-      border-top: 1px solid var(--border);
-      padding: 30px 0;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .footer-inner p {
+      text-align: center;
+      padding: 35px 20px;
       color: var(--muted);
-      font-size: 0.82rem;
+      border-top: 1px solid var(--border);
     }
 
     /* =========================
        WHATSAPP
-    ========================= */
+    ========================== */
 
-    .floating-whatsapp {
+    .whatsapp {
       position: fixed;
       right: 22px;
       bottom: 22px;
@@ -1017,819 +616,838 @@
       width: 58px;
       height: 58px;
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: #25d366;
+      background: #25D366;
       color: white;
-      font-size: 1.65rem;
-      box-shadow: 0 12px 35px rgba(37, 211, 102, 0.3);
-      transition: 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 27px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.2);
+      transition: .25s;
     }
 
-    .floating-whatsapp:hover {
-      transform: scale(1.08) translateY(-3px);
+    .whatsapp:hover {
+      transform: scale(1.08);
     }
 
     /* =========================
-       MOBILE
-    ========================= */
+       RESPONSIVE
+    ========================== */
 
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
+    @media(max-width:900px) {
 
       .hero {
-        min-height: auto;
-        padding-top: 130px;
-      }
-
-      .hero-grid {
         grid-template-columns: 1fr;
-        gap: 55px;
-      }
-
-      .hero h1 {
-        font-size: clamp(2.8rem, 12vw, 4.5rem);
-      }
-
-      .hero-visual-wrap {
-        order: -1;
-      }
-
-      .hero-visual {
-        width: min(330px, 85vw);
-      }
-
-      .features,
-      .mini-grid,
-      .contact-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .topic-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .process {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .about-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-card {
-        max-width: 400px;
-        margin: auto;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        width: min(100% - 28px, 1120px);
-      }
-
-      section:not(.hero) {
-        padding: 75px 0;
-      }
-
-      .hero {
-        padding-top: 115px;
-        padding-bottom: 70px;
-      }
-
-      .hero h1 {
-        letter-spacing: -2.5px;
-      }
-
-      .hero-text {
-        font-size: 0.98rem;
-      }
-
-      .hero-buttons {
-        flex-direction: column;
-      }
-
-      .hero-buttons .btn {
-        width: 100%;
-      }
-
-      .features,
-      .mini-grid,
-      .contact-grid,
-      .topic-grid,
-      .process {
-        grid-template-columns: 1fr;
-      }
-
-      .stat1 {
-        left: -5%;
-      }
-
-      .stat2 {
-        right: -8%;
-      }
-
-      .stat3 {
-        left: 2%;
-      }
-
-      .cta-box {
-        padding: 40px 25px;
-      }
-
-      .footer-inner {
-        flex-direction: column;
         text-align: center;
       }
 
-      .formula {
-        opacity: 0.55 !important;
+      .hero p {
+        margin: auto;
       }
 
-      .f17,
-      .f18,
-      .f19,
-      .f20 {
-        display: none;
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .cards,
+      .lesson-grid,
+      .mini-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .steps {
+        grid-template-columns: repeat(2,1fr);
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
+    @media(max-width:600px) {
+
+      .hero {
+        padding-top: 130px;
+      }
+
+      .cards,
+      .lesson-grid,
+      .mini-grid,
+      .contact-grid,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 46px;
+        letter-spacing: -2px;
+      }
+
+      .section-title {
+        font-size: 32px;
+      }
+
+      .about-box {
+        padding: 30px 22px;
+      }
+
+      .cta {
+        padding: 40px 20px;
+      }
+
+      .cta h2 {
+        font-size: 29px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      * {
         scroll-behavior: auto !important;
+        animation: none !important;
+        transition: none !important;
       }
+
     }
+
   </style>
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="container nav-inner">
+  <!-- =========================
+       ARKA PLAN FORMÜLLERİ
+  ========================== -->
+
+  <div class="formula" style="top:12%;left:7%;">F = ma</div>
+  <div class="formula" style="top:25%;left:83%;">E = mc²</div>
+  <div class="formula" style="top:44%;left:10%;">v = Δx / Δt</div>
+  <div class="formula" style="top:62%;left:86%;">∑F = ma</div>
+  <div class="formula" style="top:77%;left:7%;">λ = h/p</div>
+  <div class="formula" style="top:88%;left:78%;">P = F/A</div>
+  <div class="formula" style="top:52%;left:47%;">W = F·x</div>
+  <div class="formula" style="top:18%;left:48%;">p = mv</div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <nav>
+
       <a href="#anasayfa" class="logo">
-        Zeynep<span>Naz</span>Fizik
+        ZeynepNazFizik
       </a>
 
-      <div class="nav-links">
-        <a href="#neden">Neden?</a>
-        <a href="#dersler">Dersler</a>
-        <a href="#fizik-1dakika">1 Dakika Fizik</a>
-        <a href="#hakkimda">Hakkımda</a>
-        <a href="#iletisim">İletişim</a>
+      <div class="nav-buttons">
+
+        <button
+          class="icon-btn"
+          onclick="toggleDark()"
+          aria-label="Karanlık modu aç/kapat">
+          ☾
+        </button>
+
+        <a
+          class="icon-btn"
+          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+          target="_blank"
+          aria-label="WhatsApp">
+          ☎
+        </a>
+
       </div>
 
-      <button
-        class="theme-btn"
-        id="themeBtn"
-        onclick="toggleDark()"
-        aria-label="Tema değiştir"
-      >
-        🌙
-      </button>
-    </div>
-  </nav>
+    </nav>
 
-  <!-- HERO -->
-  <section class="hero" id="anasayfa">
+  </header>
 
-    <div class="formulas">
+  <main>
 
-      <div class="formula f1">F = ma</div>
-      <div class="formula f2">E = mc²</div>
-      <div class="formula f3">p = mv</div>
-      <div class="formula f4">V = IR</div>
-      <div class="formula f5">ΣF = ma</div>
-      <div class="formula f6">λ = h/p</div>
-      <div class="formula f7">W = F·d</div>
-      <div class="formula f8">E = hf</div>
-      <div class="formula f9">P = W/t</div>
-      <div class="formula f10">K = ½mv²</div>
-      <div class="formula f11">Q = mcΔT</div>
-      <div class="formula f12">τ = r × F</div>
-      <div class="formula f13">v = ωr</div>
-      <div class="formula f14">I = Q/t</div>
-      <div class="formula f15">R = V/I</div>
-      <div class="formula f16">a = Δv/Δt</div>
-      <div class="formula f17">F = Gm₁m₂/r²</div>
-      <div class="formula f18">T = 2π√(m/k)</div>
-      <div class="formula f19">n = c/v</div>
-      <div class="formula f20">Δp = FΔt</div>
+    <!-- =========================
+         ANA SAYFA
+    ========================== -->
 
-      <span class="particle p1"></span>
-      <span class="particle p2"></span>
-      <span class="particle p3"></span>
-      <span class="particle p4"></span>
-      <span class="particle p5"></span>
-      <span class="particle p6"></span>
-    </div>
-
-    <div class="container hero-grid">
+    <section class="hero" id="anasayfa">
 
       <div>
-        <div class="hero-badge">
-          Online Fizik Eğitimi
+
+        <div class="badge">
+          🎓 Online Birebir Ders
         </div>
 
         <h1>
-          Fiziği ezberleme.<br>
-          <span>Gerçekten anla.</span>
+          Fiziği ve matematiği
+          <span>birlikte keşfedelim.</span>
         </h1>
 
-        <p class="hero-text">
-          Lise, TYT ve AYT öğrencileri için anlaşılır,
-          öğrenci odaklı ve online fizik dersleri.
-          Karmaşık görünen konuları birlikte sadeleştirelim.
+        <p>
+          Ortaokul ve lise seviyesinde matematik ve fizik;
+          TYT ve AYT fizik dersleriyle okul hayatında ve sınavlarda
+          daha sağlam bir temel oluştur.
         </p>
 
         <div class="hero-buttons">
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20online%20fizik%20dersleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            💬 WhatsApp'tan Bilgi Al
-          </a>
 
-          <a class="btn btn-secondary" href="#dersler">
+          <a
+            href="#dersler"
+            class="btn btn-primary">
             Dersleri İncele →
           </a>
-        </div>
-      </div>
 
-      <div class="hero-visual-wrap" id="heroVisualWrap">
-        <div class="hero-visual" id="heroVisual">
-
-          <div class="orbit"></div>
-          <div class="orbit two"></div>
-          <div class="orbit three"></div>
-
-          <div class="atom-core">
-            ∑
-          </div>
-
-          <div class="stat-card stat1">
-            🎓 Boğaziçi Üniversitesi
-          </div>
-
-          <div class="stat-card stat2">
-            💻 %100 Online
-          </div>
-
-          <div class="stat-card stat3">
-            ⚛️ Fizik
-          </div>
+          <a
+            href="#iletisim"
+            class="btn btn-secondary">
+            Bilgi Al
+          </a>
 
         </div>
+
       </div>
 
-    </div>
-  </section>
+      <div class="orbit">
 
-  <!-- NEDEN -->
-  <section id="neden">
-    <div class="container">
+        <div class="atom">
+          ∑
+        </div>
 
-      <div class="section-head">
-        <div class="eyebrow">Neden ZeynepNazFizik?</div>
-        <h2>Fizik dersini sadece dinleme, gerçekten öğren.</h2>
+      </div>
+
+    </section>
+
+    <!-- =========================
+         NEDEN ZEYNEPNAZFİZİK
+    ========================== -->
+
+    <section id="neden">
+
+      <h2 class="section-title">
+        Neden ZeynepNazFizik?
+      </h2>
+
+      <p class="section-subtitle">
+        Konuları ezberlemek yerine mantığını anlamaya,
+        eksikleri belirlemeye ve öğrencinin seviyesine göre
+        ilerlemeye odaklanan online ders sistemi.
+      </p>
+
+      <div class="cards">
+
+        <div class="card">
+
+          <div class="card-icon">
+            🎯
+          </div>
+
+          <h3>
+            Kişiye Özel İlerleme
+          </h3>
+
+          <p>
+            Öğrencinin seviyesine, hedeflerine ve eksiklerine
+            göre ders süreci şekillendirilir.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon">
+            💡
+          </div>
+
+          <h3>
+            Mantığını Anla
+          </h3>
+
+          <p>
+            Formülleri yalnızca ezberlemek yerine konuların
+            arkasındaki mantığı anlamaya odaklanılır.
+          </p>
+
+        </div>
+
+        <div class="card">
+
+          <div class="card-icon">
+            💻
+          </div>
+
+          <h3>
+            Online ve Esnek
+          </h3>
+
+          <p>
+            Dersler online olarak gerçekleştirilir ve öğrencinin
+            programına uygun şekilde planlanabilir.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         DERSLER
+    ========================== -->
+
+    <section id="dersler">
+
+      <h2 class="section-title">
+        Dersler
+      </h2>
+
+      <p class="section-subtitle">
+        Ortaokuldan lise seviyesine, okul derslerinden
+        TYT ve AYT hazırlığına kadar farklı seviyelere
+        yönelik online ders seçenekleri.
+      </p>
+
+      <div class="lesson-grid">
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            ➗
+          </div>
+
+          <h3>
+            Ortaokul Matematik
+          </h3>
+
+          <p>
+            Ortaokul matematik konularının anlaşılması,
+            okul sınavlarına hazırlık ve soru çözümü.
+          </p>
+
+          <span class="tag">
+            ORTAOKUL
+          </span>
+
+        </div>
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            ⚛️
+          </div>
+
+          <h3>
+            Ortaokul Fizik
+          </h3>
+
+          <p>
+            Fen bilimleri kapsamında fizik konularını
+            temelinden anlamaya yönelik çalışmalar.
+          </p>
+
+          <span class="tag">
+            ORTAOKUL
+          </span>
+
+        </div>
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            📐
+          </div>
+
+          <h3>
+            Lise Matematik
+          </h3>
+
+          <p>
+            Lise matematik konuları, okul sınavları,
+            konu eksikleri ve soru çözümü.
+          </p>
+
+          <span class="tag">
+            LİSE
+          </span>
+
+        </div>
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            🔬
+          </div>
+
+          <h3>
+            Lise Fizik
+          </h3>
+
+          <p>
+            Lise fizik konularının mantığını anlamaya,
+            soru çözme becerisini geliştirmeye yönelik dersler.
+          </p>
+
+          <span class="tag">
+            LİSE
+          </span>
+
+        </div>
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            🎯
+          </div>
+
+          <h3>
+            TYT Fizik
+          </h3>
+
+          <p>
+            TYT fizik konuları, soru çözümü ve sınav
+            odaklı çalışma programı.
+          </p>
+
+          <span class="tag">
+            TYT
+          </span>
+
+        </div>
+
+        <div class="lesson-card">
+
+          <div class="lesson-icon">
+            🚀
+          </div>
+
+          <h3>
+            AYT Fizik
+          </h3>
+
+          <p>
+            AYT fizik konuları, ileri seviye soru çözümü
+            ve üniversite sınavına hazırlık.
+          </p>
+
+          <span class="tag">
+            AYT
+          </span>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- =========================
+         HAKKIMDA
+    ========================== -->
+
+    <section id="hakkimda">
+
+      <h2 class="section-title">
+        Hakkımda
+      </h2>
+
+      <p class="section-subtitle">
+        Fizik ve matematiği öğrenciler için daha anlaşılır,
+        sistemli ve keyifli hale getirmeyi amaçlıyorum.
+      </p>
+
+      <div class="about-box">
+
+        <h3>
+          Zeynep Naz Bilgütay
+        </h3>
+
+        <div class="university">
+          Boğaziçi Üniversitesi
+        </div>
+
         <p>
-          Dersleri öğrencinin seviyesine ve ihtiyacına göre
-          anlaşılır, düzenli ve hedef odaklı şekilde ilerletiyoruz.
+          <strong>
+            Fizik Öğretmenliği (İngilizce)
+          </strong>
         </p>
-      </div>
 
-      <div class="features">
+        <br>
 
-        <div class="feature-card">
-          <div class="feature-icon">🧠</div>
-          <h3>Anlayarak Öğren</h3>
-          <p>
-            Formülleri ezberlemek yerine arkasındaki fiziksel mantığı
-            kavrayarak öğren.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h3>Hedef Odaklı Çalış</h3>
-          <p>
-            TYT, AYT veya okul sınavlarına göre çalışma planını
-            hedeflerine uygun şekilde oluştur.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">👩‍🎓</div>
-          <h3>Öğrenci Odaklı Ders</h3>
-          <p>
-            Her öğrencinin eksikleri ve öğrenme şekli farklıdır.
-            Dersleri buna göre şekillendir.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">💻</div>
-          <h3>Online Eğitim</h3>
-          <p>
-            Nerede olursan ol, bilgisayarından veya tabletinden
-            derslere katıl.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔎</div>
-          <h3>Eksiklerini Keşfet</h3>
-          <p>
-            Hangi konularda zorlandığını belirleyip çalışmayı
-            doğru noktaya yoğunlaştır.
-          </p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">✏️</div>
-          <h3>Bol Soru Çözümü</h3>
-          <p>
-            Konuyu öğrendikten sonra soru çözerek bilgiyi
-            pekiştir ve sınav pratiğini geliştir.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- DERSLER -->
-  <section class="lessons" id="dersler">
-    <div class="container">
-
-      <div class="section-head">
-        <div class="eyebrow">Dersler</div>
-        <h2>Hangi seviyede olursan ol, birlikte ilerleyelim.</h2>
         <p>
-          İhtiyacına göre TYT, AYT veya lise fizik konularına odaklan.
+          Derslerde öğrencinin yalnızca doğru cevabı bulmasını
+          değil, sorunun neden ve nasıl çözüldüğünü anlamasını
+          hedefliyorum. Konu anlatımı, örnek sorular ve öğrencinin
+          ihtiyaçlarına göre şekillenen çalışma süreciyle ilerliyoruz.
         </p>
+
       </div>
 
-      <div class="tabs">
-        <button class="tab active" onclick="showTab('tyt', this)">
-          TYT Fizik
-        </button>
+    </section>
 
-        <button class="tab" onclick="showTab('ayt', this)">
-          AYT Fizik
-        </button>
+    <!-- =========================
+         FİZİKTEN 1 DAKİKA
+    ========================== -->
 
-        <button class="tab" onclick="showTab('lise', this)">
-          Lise Fiziği
-        </button>
-      </div>
+    <section id="fizik-1-dakika">
 
-      <!-- TYT -->
-      <div class="lesson-content active" id="tyt">
-        <div class="topic-grid">
+      <h2 class="section-title">
+        Fizikten 1 Dakika
+      </h2>
 
-          <div class="topic">⚛️ Fizik Bilimine Giriş</div>
-          <div class="topic">🧱 Madde ve Özellikleri</div>
-          <div class="topic">🏃 Hareket ve Kuvvet</div>
-          <div class="topic">⚡ İş, Güç ve Enerji</div>
-          <div class="topic">🌡️ Isı ve Sıcaklık</div>
-          <div class="topic">💧 Basınç ve Kaldırma</div>
-          <div class="topic">🔌 Elektrik ve Manyetizma</div>
-          <div class="topic">🌊 Dalgalar</div>
-          <div class="topic">🔍 Optik</div>
-
-        </div>
-      </div>
-
-      <!-- AYT -->
-      <div class="lesson-content" id="ayt">
-        <div class="topic-grid">
-
-          <div class="topic">📐 Vektörler</div>
-          <div class="topic">🏃 Kuvvet ve Hareket</div>
-          <div class="topic">⚙️ Newton Kanunları</div>
-          <div class="topic">📏 Bir Boyutta Hareket</div>
-          <div class="topic">🚀 İki Boyutta Hareket</div>
-          <div class="topic">⚡ Enerji ve Hareket</div>
-          <div class="topic">💥 İtme ve Momentum</div>
-          <div class="topic">⚖️ Tork ve Denge</div>
-          <div class="topic">🔋 Elektrik ve Manyetizma</div>
-          <div class="topic">⭕ Çembersel Hareket</div>
-          <div class="topic">〰️ Basit Harmonik Hareket</div>
-          <div class="topic">🌊 Dalgalar</div>
-          <div class="topic">🔍 Optik</div>
-          <div class="topic">⚛️ Modern Fizik</div>
-          <div class="topic">🛰️ Modern Fiziğin Teknolojideki Uygulamaları</div>
-
-        </div>
-      </div>
-
-      <!-- LİSE -->
-      <div class="lesson-content" id="lise">
-        <div class="topic-grid">
-
-          <div class="topic">📘 9. Sınıf Fiziği</div>
-          <div class="topic">📗 10. Sınıf Fiziği</div>
-          <div class="topic">📕 11. Sınıf Fiziği</div>
-          <div class="topic">📙 12. Sınıf Fiziği</div>
-          <div class="topic">📝 Okul Sınavlarına Hazırlık</div>
-          <div class="topic">🔄 Konu Tekrarı</div>
-          <div class="topic">✏️ Soru Çözümü</div>
-          <div class="topic">🔎 Eksik Konu Tamamlama</div>
-          <div class="topic">🎯 Sınav Öncesi Genel Tekrar</div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- 1 DAKİKA FİZİK -->
-  <section id="fizik-1dakika">
-    <div class="container">
-
-      <div class="section-head">
-        <div class="eyebrow">Fizikten 1 Dakika</div>
-        <h2>Kısa bak, mantığını kap.</h2>
-        <p>
-          Fizikte sık kullanılan bazı temel fikirleri bir dakikada hatırla.
-        </p>
-      </div>
+      <p class="section-subtitle">
+        Fizikle ilgili kısa, anlaşılır ve günlük hayattan
+        örneklerle hazırlanmış mini bilgiler.
+      </p>
 
       <div class="mini-grid">
 
         <div class="mini-card">
-          <div class="mini-number">01 / KUVVET</div>
-          <h3>Newton'un 2. Yasası</h3>
+
+          <div class="formula-big">
+            F = ma
+          </div>
+
+          <h3>
+            Kuvvet ve İvme
+          </h3>
+
           <p>
-            Bir cisme etki eden net kuvvet, cismin kütlesi ile
-            ivmesinin çarpımına eşittir.
+            Bir cismin ivmesi, üzerine etki eden net kuvvet
+            ve kütlesiyle ilişkilidir.
           </p>
-          <span class="equation">F = m · a</span>
+
         </div>
 
         <div class="mini-card">
-          <div class="mini-number">02 / MOMENTUM</div>
-          <h3>Momentum</h3>
+
+          <div class="formula-big">
+            E = mc²
+          </div>
+
+          <h3>
+            Kütle ve Enerji
+          </h3>
+
           <p>
-            Bir cismin hareket miktarı, kütlesi ve hızıyla ilişkilidir.
+            Einstein'ın ünlü bağıntısı kütle ile enerjinin
+            birbirleriyle ilişkisini ifade eder.
           </p>
-          <span class="equation">p = m · v</span>
+
         </div>
 
         <div class="mini-card">
-          <div class="mini-number">03 / ENERJİ</div>
-          <h3>Kinetik Enerji</h3>
+
+          <div class="formula-big">
+            v = Δx / Δt
+          </div>
+
+          <h3>
+            Hız
+          </h3>
+
           <p>
-            Hareket eden bir cismin kinetik enerjisi hızın karesiyle değişir.
+            Bir cismin konumundaki değişimin zamana oranı
+            ortalama hız hakkında bilgi verir.
           </p>
-          <span class="equation">Eₖ = ½mv²</span>
+
         </div>
 
         <div class="mini-card">
-          <div class="mini-number">04 / ELEKTRİK</div>
-          <h3>Ohm Kanunu</h3>
+
+          <div class="formula-big">
+            W = F·x
+          </div>
+
+          <h3>
+            İş
+          </h3>
+
           <p>
-            Bir devrede gerilim, akım ve direnç arasındaki temel ilişkiyi verir.
+            Bir kuvvet cismin hareket yönünde yer değiştirmesine
+            neden olduğunda fiziksel anlamda iş yapılır.
           </p>
-          <span class="equation">V = I · R</span>
+
         </div>
 
         <div class="mini-card">
-          <div class="mini-number">05 / DALGALAR</div>
-          <h3>Dalga Hızı</h3>
+
+          <div class="formula-big">
+            P = F/A
+          </div>
+
+          <h3>
+            Basınç
+          </h3>
+
           <p>
-            Bir dalganın hızı, frekansı ile dalga boyunun çarpımına eşittir.
+            Katılarda basınç, uygulanan kuvvet ve temas alanı
+            arasındaki ilişkiyle ifade edilir.
           </p>
-          <span class="equation">v = f · λ</span>
+
         </div>
 
         <div class="mini-card">
-          <div class="mini-number">06 / ISI</div>
-          <h3>Isı</h3>
+
+          <div class="formula-big">
+            p = mv
+          </div>
+
+          <h3>
+            Momentum
+          </h3>
+
           <p>
-            Bir maddenin sıcaklığını değiştirmek için gereken ısı;
-            kütle, öz ısı ve sıcaklık değişimine bağlıdır.
+            Bir cismin momentumu kütlesi ve hızının
+            çarpımıyla ifade edilir.
           </p>
-          <span class="equation">Q = m · c · ΔT</span>
+
         </div>
 
       </div>
-    </div>
-  </section>
 
-  <!-- SÜREÇ -->
-  <section>
-    <div class="container">
+    </section>
 
-      <div class="section-head">
-        <div class="eyebrow">Nasıl İlerliyoruz?</div>
-        <h2>Dersi birlikte, adım adım ilerletiyoruz.</h2>
+    <!-- =========================
+         NASIL İLERLİYORUZ
+    ========================== -->
+
+    <section id="surec">
+
+      <h2 class="section-title">
+        Nasıl İlerliyoruz?
+      </h2>
+
+      <p class="section-subtitle">
+        Ders sürecini öğrencinin ihtiyaçlarına göre
+        adım adım şekillendiriyoruz.
+      </p>
+
+      <div class="steps">
+
+        <div class="step">
+
+          <div class="step-number">
+            1
+          </div>
+
+          <h3>
+            Tanışıyoruz
+          </h3>
+
+          <p>
+            Öğrencinin seviyesi, hedefleri ve ihtiyaçları
+            hakkında konuşuyoruz.
+          </p>
+
+        </div>
+
+        <div class="step">
+
+          <div class="step-number">
+            2
+          </div>
+
+          <h3>
+            Eksikleri Belirliyoruz
+          </h3>
+
+          <p>
+            Hangi konularda desteğe ihtiyaç olduğunu
+            birlikte belirliyoruz.
+          </p>
+
+        </div>
+
+        <div class="step">
+
+          <div class="step-number">
+            3
+          </div>
+
+          <h3>
+            Derslere Başlıyoruz
+          </h3>
+
+          <p>
+            Öğrencinin seviyesine uygun şekilde konu
+            anlatımı ve soru çözümü yapıyoruz.
+          </p>
+
+        </div>
+
+        <div class="step">
+
+          <div class="step-number">
+            4
+          </div>
+
+          <h3>
+            Gelişimi Takip Ediyoruz
+          </h3>
+
+          <p>
+            Süreç boyunca eksikleri ve gelişimi
+            birlikte takip ediyoruz.
+          </p>
+
+        </div>
+
       </div>
 
-      <div class="process">
+    </section>
 
-        <div class="step">
-          <div class="step-number">01 / TANIŞIYORUZ</div>
-          <h3>Tanışıyoruz</h3>
-          <p>
-            Öncelikle seviyeni, hedeflerini ve ihtiyaçlarını konuşuyoruz.
-          </p>
-        </div>
+    <!-- =========================
+         CTA
+    ========================== -->
 
-        <div class="step">
-          <div class="step-number">02 / PLANLIYORUZ</div>
-          <h3>Planlıyoruz</h3>
-          <p>
-            Eksiklerine ve hedeflerine uygun bir çalışma düzeni oluşturuyoruz.
-          </p>
-        </div>
+    <section>
 
-        <div class="step">
-          <div class="step-number">03 / DERS YAPIYORUZ</div>
-          <h3>Ders Yapıyoruz</h3>
-          <p>
-            Konuları anlaşılır şekilde işleyip bolca örnek ve soru çözüyoruz.
-          </p>
-        </div>
-
-        <div class="step">
-          <div class="step-number">04 / TAKİP EDİYORUZ</div>
-          <h3>Takip Ediyoruz</h3>
-          <p>
-            Gelişimini takip ederek çalışma planını gerektiğinde güncelliyoruz.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- HAKKIMDA -->
-  <section id="hakkimda">
-    <div class="container about-grid">
-
-      <div class="profile-card">
-        <div class="profile-initial">ZN</div>
-
-        <div class="profile-label">
-          Online Fizik Eğitimi
-        </div>
-      </div>
-
-      <div class="about-content">
-
-        <div class="eyebrow">Hakkımda</div>
+      <div class="cta">
 
         <h2>
-          Fiziği daha anlaşılır hale getirmek için buradayım.
+          Dersler hakkında bilgi almak ister misin?
         </h2>
 
         <p>
-          Ben Zeynep Naz Bilgütay. Boğaziçi Üniversitesi İngilizce
-          Fizik Bölümü öğrencisiyim. Lise, TYT ve AYT seviyesindeki
-          öğrencilerle online olarak çalışıyorum.
-        </p>
-
-        <p>
-          Amacım sadece formülleri öğretmek değil; konuların
-          mantığını birlikte kurarak fiziği daha anlaşılır ve
-          ulaşılabilir hale getirmek.
-        </p>
-
-        <div class="about-list">
-
-          <div>
-            <span>✓</span>
-            Boğaziçi Üniversitesi İngilizce Fizik
-          </div>
-
-          <div>
-            <span>✓</span>
-            %100 Online Eğitim
-          </div>
-
-          <div>
-            <span>✓</span>
-            Lise / TYT / AYT
-          </div>
-
-          <div>
-            <span>✓</span>
-            Öğrenci odaklı ders yaklaşımı
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-
-      <div class="cta-box">
-
-        <h2>
-          Fizikle aranı düzeltmeye hazır mısın?
-        </h2>
-
-        <p>
-          Seviyeni, hedefini ve ihtiyaçlarını konuşalım.
-          Online fizik dersleri hakkında bilgi almak için WhatsApp'tan ulaşabilirsin.
+          Ders içeriği, seviyeye uygun program ve çalışma
+          süreci hakkında doğrudan WhatsApp üzerinden
+          iletişime geçebilirsin.
         </p>
 
         <a
           class="btn"
-          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20online%20fizik%20dersleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          💬 WhatsApp'tan Ulaş
+          style="background:white;color:#6d28d9;"
+          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+          target="_blank">
+
+          WhatsApp'tan Bilgi Al
+
         </a>
 
       </div>
 
-    </div>
-  </section>
+    </section>
 
-  <!-- İLETİŞİM -->
-  <section id="iletisim">
-    <div class="container">
+    <!-- =========================
+         İLETİŞİM
+    ========================== -->
 
-      <div class="section-head">
-        <div class="eyebrow">İletişim</div>
-        <h2>Bir mesaj kadar yakınız.</h2>
-        <p>
-          Dersler hakkında bilgi almak veya iletişime geçmek için
-          aşağıdaki kanallardan ulaşabilirsin.
-        </p>
-      </div>
+    <section id="iletisim">
+
+      <h2 class="section-title">
+        İletişim
+      </h2>
+
+      <p class="section-subtitle">
+        Dersler hakkında bilgi almak veya ders programı
+        hakkında konuşmak için iletişime geçebilirsin.
+      </p>
 
       <div class="contact-grid">
 
-        <a class="contact-card" href="tel:05539233862">
-          <div class="contact-icon">📞</div>
-          <h3>Telefon</h3>
-          <p>0553 923 38 62</p>
-        </a>
+        <div class="contact-card">
 
-        <a
-          class="contact-card"
-          href="mailto:bilgutayzeynepnaz@gmail.com"
-        >
-          <div class="contact-icon">✉️</div>
-          <h3>E-posta</h3>
-          <p>bilgutayzeynepnaz@gmail.com</p>
-        </a>
+          <div class="icon">
+            📱
+          </div>
 
-        <a
-          class="contact-card"
-          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20online%20fizik%20dersleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <div class="contact-icon">💬</div>
-          <h3>WhatsApp</h3>
-          <p>Mesaj göndermek için tıkla</p>
-        </a>
+          <h3>
+            WhatsApp
+          </h3>
+
+          <p>
+            0553 923 38 62
+          </p>
+
+          <br>
+
+          <a
+            class="btn btn-primary"
+            href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+            target="_blank">
+
+            WhatsApp'tan Yaz
+
+          </a>
+
+        </div>
+
+        <div class="contact-card">
+
+          <div class="icon">
+            ✉️
+          </div>
+
+          <h3>
+            E-posta
+          </h3>
+
+          <p>
+            bilgutayzeynepnaz@gmail.com
+          </p>
+
+          <br>
+
+          <a
+            class="btn btn-secondary"
+            href="mailto:bilgutayzeynepnaz@gmail.com">
+
+            E-posta Gönder
+
+          </a>
+
+        </div>
 
       </div>
 
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
+  </main>
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
   <footer>
-    <div class="container footer-inner">
 
-      <div class="logo">
-        Zeynep<span>Naz</span>Fizik
-      </div>
+    © 2026 ZeynepNazFizik —
+    Zeynep Naz Bilgütay
 
-      <p>
-        © 2026 Zeynep Naz Bilgütay · Online Fizik Dersleri
-      </p>
-
-    </div>
   </footer>
 
-  <!-- FLOATING WHATSAPP -->
+  <!-- =========================
+       FLOATING WHATSAPP
+  ========================== -->
+
   <a
-    class="floating-whatsapp"
-    href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20online%20fizik%20dersleri%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+    class="whatsapp"
+    href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
     target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp"
-  >
-    💬
+    aria-label="WhatsApp">
+
+    ☎
+
   </a>
 
   <script>
 
     /* =========================
-       TABS
-    ========================= */
-
-    function showTab(id, btn) {
-
-      document
-        .querySelectorAll(".lesson-content")
-        .forEach(function(content) {
-          content.classList.remove("active");
-        });
-
-      document
-        .querySelectorAll(".tab")
-        .forEach(function(tab) {
-          tab.classList.remove("active");
-        });
-
-      document
-        .getElementById(id)
-        .classList.add("active");
-
-      btn.classList.add("active");
-    }
-
-
-    /* =========================
        DARK MODE
-    ========================= */
+    ========================== */
 
     function toggleDark() {
 
       document.body.classList.toggle("dark");
 
-      const dark =
-        document.body.classList.contains("dark");
+      if (document.body.classList.contains("dark")) {
 
-      localStorage.setItem(
-        "zn-dark",
-        dark ? "1" : "0"
-      );
+        localStorage.setItem("theme", "dark");
 
-      document.getElementById("themeBtn").textContent =
-        dark ? "☀️" : "🌙";
+      } else {
+
+        localStorage.setItem("theme", "light");
+
+      }
+
     }
 
-
-    /* =========================
-       LOAD DARK MODE
-    ========================= */
-
-    if (localStorage.getItem("zn-dark") === "1") {
+    if (localStorage.getItem("theme") === "dark") {
 
       document.body.classList.add("dark");
 
-      document.getElementById("themeBtn").textContent = "☀️";
-    }
-
-
-    /* =========================
-       MOUSE PARALLAX
-    ========================= */
-
-    const visual =
-      document.getElementById("heroVisual");
-
-    if (
-      window.matchMedia("(pointer:fine)").matches &&
-      visual
-    ) {
-
-      document.addEventListener("mousemove", function(e) {
-
-        const x =
-          e.clientX / window.innerWidth - 0.5;
-
-        const y =
-          e.clientY / window.innerHeight - 0.5;
-
-        visual.style.transform =
-          "perspective(900px) rotateY(" +
-          (x * 4) +
-          "deg) rotateX(" +
-          (y * -4) +
-          "deg)";
-
-      });
-
-      document.addEventListener("mouseleave", function() {
-
-        visual.style.transform = "";
-
-      });
     }
 
   </script>
