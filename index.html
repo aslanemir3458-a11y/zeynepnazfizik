@@ -1,1456 +1,2213 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="google-site-verification" content="tSFeMDuQsPjZvU7mMrh-wfM8nh2TYh7pd31V-oBb5Cc">
+<meta name="google-site-verification" content="tSFeMDuQsPjZvU7mMrh-wfM8nh2TYh7pd31V-oBb5Cc">
 
-  <title>ZeynepNazFizik | Online Fizik ve Matematik Dersleri</title>
+<title>ZeynepNazFizik | Online Fizik ve Matematik Dersleri</title>
 
-  <meta
-    name="description"
-    content="Zeynep Naz Bilgütay ile ortaokul ve lise matematik, fizik, TYT ve AYT fizik online dersleri. Fizik Öğretmenliği (İngilizce) öğrencisinden kişiye özel online eğitim."
-  >
+<meta name="description" content="Zeynep Naz Bilgütay ile ortaokul ve lise matematik, fizik, TYT ve AYT fizik online dersleri. Fizik Öğretmenliği (İngilizce) öğrencisinden kişiye özel online eğitim.">
 
-  <meta
-    name="keywords"
-    content="Zeynep Naz Fizik, Zeynep Naz Bilgütay, online fizik dersi, online matematik dersi, ortaokul matematik, ortaokul fizik, lise matematik, lise fizik, TYT fizik, AYT fizik, özel ders"
-  >
+<meta name="keywords" content="Zeynep Naz Fizik, Zeynep Naz Bilgütay, online fizik dersi, online matematik dersi, ortaokul matematik, ortaokul fizik, lise matematik, lise fizik, TYT fizik, AYT fizik, fizik özel ders">
 
-  <meta name="author" content="Zeynep Naz Bilgütay">
+<meta name="author" content="Zeynep Naz Bilgütay">
 
-  <meta property="og:title" content="ZeynepNazFizik | Online Fizik ve Matematik Dersleri">
-  <meta
-    property="og:description"
-    content="Ortaokul ve lise matematik, fizik ile TYT ve AYT fizik online dersleri."
-  >
-  <meta property="og:type" content="website">
+<meta property="og:title" content="ZeynepNazFizik | Online Fizik ve Matematik Dersleri">
+<meta property="og:description" content="Ortaokul ve lise matematik, fizik ile TYT ve AYT fizik online dersleri.">
+<meta property="og:type" content="website">
 
-  <style>
+<style>
 
-    :root {
-      --bg: #faf7ff;
-      --bg2: #f3edff;
-      --card: rgba(255,255,255,0.78);
-      --text: #241936;
-      --muted: #6f6680;
-      --primary: #8b5cf6;
-      --primary-dark: #6d28d9;
-      --secondary: #c084fc;
-      --border: rgba(139,92,246,0.18);
-      --shadow: 0 20px 60px rgba(91,33,182,0.12);
-    }
+:root{
+    --bg:#080511;
+    --bg2:#10091d;
+    --card:rgba(255,255,255,.065);
+    --card2:rgba(255,255,255,.09);
+    --text:#f8f5ff;
+    --muted:#b7aec8;
+    --purple:#9b5cff;
+    --purple2:#c084fc;
+    --pink:#ec4899;
+    --cyan:#67e8f9;
+    --border:rgba(255,255,255,.11);
+    --shadow:0 25px 80px rgba(0,0,0,.35);
+}
 
-    body.dark {
-      --bg: #100c18;
-      --bg2: #171020;
-      --card: rgba(29,22,42,0.84);
-      --text: #f7f1ff;
-      --muted: #b9acc9;
-      --border: rgba(192,132,252,0.18);
-      --shadow: 0 20px 60px rgba(0,0,0,0.3);
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+html{
+    scroll-behavior:smooth;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Inter, Arial, sans-serif;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(139,92,246,.08), transparent 30%),
-        radial-gradient(circle at 90% 30%, rgba(192,132,252,.08), transparent 30%),
+body{
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(139,92,246,.18),transparent 30%),
+        radial-gradient(circle at 85% 30%,rgba(236,72,153,.10),transparent 28%),
+        radial-gradient(circle at 50% 80%,rgba(103,232,249,.07),transparent 25%),
         var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      transition: background .3s, color .3s;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* =========================
-       FORMÜLLER
-    ========================== */
-
-    .formula {
-      position: fixed;
-      color: rgba(139,92,246,.11);
-      font-size: 24px;
-      font-weight: 700;
-      pointer-events: none;
-      z-index: -1;
-      animation: float 12s ease-in-out infinite;
-      user-select: none;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) rotate(0deg);
-      }
-
-      50% {
-        transform: translateY(-30px) rotate(4deg);
-      }
-    }
-
-    /* =========================
-       HEADER
-    ========================== */
-
-    header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      padding: 18px 5%;
-      backdrop-filter: blur(18px);
-      background: rgba(250,247,255,.72);
-      border-bottom: 1px solid var(--border);
-    }
-
-    body.dark header {
-      background: rgba(16,12,24,.75);
-    }
-
-    nav {
-      max-width: 1200px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 23px;
-      font-weight: 900;
-      color: var(--primary);
-    }
-
-    .nav-buttons {
-      display: flex;
-      gap: 10px;
-      align-items: center;
-    }
-
-    .icon-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 13px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 20px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: .25s;
-    }
-
-    .icon-btn:hover {
-      transform: translateY(-2px);
-      border-color: var(--primary);
-    }
-
-    /* =========================
-       HERO
-    ========================== */
-
-    .hero {
-      min-height: 100vh;
-      max-width: 1200px;
-      margin: auto;
-      padding: 150px 5% 90px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 50px;
-      align-items: center;
-    }
-
-    .badge {
-      display: inline-block;
-      padding: 9px 15px;
-      border-radius: 30px;
-      background: rgba(139,92,246,.1);
-      color: var(--primary);
-      font-weight: 700;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: clamp(44px, 6vw, 76px);
-      line-height: .98;
-      margin-bottom: 24px;
-      letter-spacing: -3px;
-    }
-
-    h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      font-size: 19px;
-      color: var(--muted);
-      line-height: 1.7;
-      max-width: 680px;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
-    }
-
-    .btn {
-      padding: 14px 21px;
-      border-radius: 14px;
-      font-weight: 800;
-      border: 1px solid var(--border);
-      display: inline-block;
-      transition: .25s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg,var(--primary),var(--primary-dark));
-      color: white;
-      box-shadow: 0 12px 30px rgba(124,58,237,.25);
-    }
-
-    .btn-secondary {
-      background: var(--card);
-    }
-
-    /* =========================
-       ORBIT
-    ========================== */
-
-    .orbit {
-      width: min(400px,80vw);
-      height: min(400px,80vw);
-      margin: auto;
-      border: 1px solid rgba(139,92,246,.25);
-      border-radius: 50%;
-      position: relative;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-shadow: var(--shadow);
-      animation: orbitFloat 5s ease-in-out infinite;
-    }
-
-    @keyframes orbitFloat {
-      0%,100% {
-        transform: translateY(0);
-      }
-
-      50% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .orbit::before,
-    .orbit::after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(192,132,252,.35);
-      border-radius: 50%;
-    }
-
-    .orbit::before {
-      width: 70%;
-      height: 40%;
-      transform: rotate(35deg);
-    }
-
-    .orbit::after {
-      width: 40%;
-      height: 70%;
-      transform: rotate(-35deg);
-    }
-
-    .atom {
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: linear-gradient(135deg,var(--primary),var(--secondary));
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 55px;
-      font-weight: 900;
-      box-shadow: 0 0 60px rgba(139,92,246,.45);
-      z-index: 2;
-    }
-
-    /* =========================
-       GENEL SECTION
-    ========================== */
-
-    section {
-      max-width: 1200px;
-      margin: auto;
-      padding: 90px 5%;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 40px;
-      margin-bottom: 15px;
-    }
-
-    .section-subtitle {
-      text-align: center;
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto 45px;
-      line-height: 1.7;
-    }
-
-    /* =========================
-       NEDEN BÖLÜMÜ
-    ========================== */
-
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .card {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      background: var(--card);
-      box-shadow: var(--shadow);
-      transition: .25s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    .card-icon {
-      font-size: 35px;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 21px;
-    }
-
-    .card p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* =========================
-       DERSLER
-    ========================== */
-
-    .lesson-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .lesson-card {
-      position: relative;
-      padding: 30px;
-      min-height: 250px;
-      border-radius: 25px;
-      border: 1px solid var(--border);
-      background: var(--card);
-      box-shadow: var(--shadow);
-      overflow: hidden;
-      transition: .25s;
-    }
-
-    .lesson-card:hover {
-      transform: translateY(-7px);
-    }
-
-    .lesson-card::after {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      right: -60px;
-      bottom: -60px;
-      background: rgba(139,92,246,.09);
-      border-radius: 50%;
-    }
-
-    .lesson-icon {
-      font-size: 42px;
-      margin-bottom: 18px;
-    }
-
-    .lesson-card h3 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
-
-    .lesson-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 17px;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 7px 11px;
-      border-radius: 10px;
-      background: rgba(139,92,246,.1);
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 800;
-    }
-
-    /* =========================
-       EĞİTİM BİLGİSİ
-    ========================== */
-
-    .about-box {
-      max-width: 900px;
-      margin: auto;
-      padding: 45px;
-      border-radius: 30px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .about-box h3 {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
-
-    .about-box .university {
-      color: var(--primary);
-      font-size: 20px;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-
-    .about-box p {
-      color: var(--muted);
-      line-height: 1.8;
-      max-width: 700px;
-      margin: auto;
-    }
-
-    /* =========================
-       FİZİKTEN 1 DAKİKA
-    ========================== */
-
-    .mini-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 20px;
-    }
-
-    .mini-card {
-      padding: 27px;
-      border-radius: 22px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
-
-    .mini-card .formula-big {
-      font-size: 29px;
-      color: var(--primary);
-      font-weight: 900;
-      margin-bottom: 15px;
-    }
-
-    .mini-card h3 {
-      margin-bottom: 9px;
-    }
-
-    .mini-card p {
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    /* =========================
-       NASIL İLERLİYORUZ
-    ========================== */
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4,1fr);
-      gap: 18px;
-    }
-
-    .step {
-      text-align: center;
-      padding: 25px 18px;
-    }
-
-    .step-number {
-      width: 55px;
-      height: 55px;
-      margin: 0 auto 15px;
-      border-radius: 50%;
-      background: linear-gradient(135deg,var(--primary),var(--secondary));
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 21px;
-      font-weight: 900;
-    }
-
-    .step h3 {
-      margin-bottom: 9px;
-    }
-
-    .step p {
-      color: var(--muted);
-      line-height: 1.6;
-      font-size: 15px;
-    }
-
-    /* =========================
-       CTA
-    ========================== */
-
-    .cta {
-      background: linear-gradient(135deg,#7c3aed,#a855f7);
-      color: white;
-      border-radius: 32px;
-      padding: 60px 30px;
-      text-align: center;
-      margin-bottom: 70px;
-      box-shadow: 0 25px 70px rgba(124,58,237,.25);
-    }
-
-    .cta h2 {
-      font-size: 35px;
-      margin-bottom: 15px;
-    }
-
-    .cta p {
-      margin: 0 auto 27px;
-      max-width: 650px;
-      line-height: 1.7;
-      opacity: .92;
-    }
-
-    /* =========================
-       İLETİŞİM
-    ========================== */
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: repeat(2,1fr);
-      gap: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .contact-card {
-      padding: 30px;
-      border-radius: 24px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .contact-card .icon {
-      font-size: 35px;
-      margin-bottom: 13px;
-    }
-
-    .contact-card h3 {
-      margin-bottom: 9px;
-    }
-
-    .contact-card p {
-      color: var(--muted);
-      line-height: 1.6;
-      word-break: break-word;
-    }
-
-    /* =========================
-       FOOTER
-    ========================== */
-
-    footer {
-      text-align: center;
-      padding: 35px 20px;
-      color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    /* =========================
-       WHATSAPP
-    ========================== */
-
-    .whatsapp {
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      z-index: 999;
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background: #25D366;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 27px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.2);
-      transition: .25s;
-    }
-
-    .whatsapp:hover {
-      transform: scale(1.08);
-    }
-
-    /* =========================
-       RESPONSIVE
-    ========================== */
-
-    @media(max-width:900px) {
-
-      .hero {
-        grid-template-columns: 1fr;
-        text-align: center;
-      }
-
-      .hero p {
-        margin: auto;
-      }
-
-      .hero-buttons {
-        justify-content: center;
-      }
-
-      .cards,
-      .lesson-grid,
-      .mini-grid {
-        grid-template-columns: repeat(2,1fr);
-      }
-
-      .steps {
-        grid-template-columns: repeat(2,1fr);
-      }
-    }
-
-    @media(max-width:600px) {
-
-      .hero {
-        padding-top: 130px;
-      }
-
-      .cards,
-      .lesson-grid,
-      .mini-grid,
-      .contact-grid,
-      .steps {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 46px;
-        letter-spacing: -2px;
-      }
-
-      .section-title {
-        font-size: 32px;
-      }
-
-      .about-box {
-        padding: 30px 22px;
-      }
-
-      .cta {
-        padding: 40px 20px;
-      }
-
-      .cta h2 {
-        font-size: 29px;
-      }
-    }
-
-    @media(prefers-reduced-motion:reduce) {
-
-      * {
-        scroll-behavior: auto !important;
-        animation: none !important;
-        transition: none !important;
-      }
-
-    }
-
-  </style>
+    color:var(--text);
+    overflow-x:hidden;
+}
+
+/* =====================================================
+   HAREKETLİ ARKA PLAN
+===================================================== */
+
+#particles{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    pointer-events:none;
+    z-index:-4;
+}
+
+.grid-bg{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    opacity:.13;
+    background-image:
+        linear-gradient(rgba(155,92,255,.25) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(155,92,255,.25) 1px,transparent 1px);
+    background-size:55px 55px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+.glow{
+    position:fixed;
+    width:500px;
+    height:500px;
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    z-index:-6;
+    opacity:.16;
+}
+
+.glow.one{
+    background:#8b5cf6;
+    top:-200px;
+    left:-150px;
+    animation:glowMove 14s infinite alternate ease-in-out;
+}
+
+.glow.two{
+    background:#ec4899;
+    right:-180px;
+    top:35%;
+    animation:glowMove2 18s infinite alternate ease-in-out;
+}
+
+@keyframes glowMove{
+    from{transform:translate(0,0)}
+    to{transform:translate(180px,120px)}
+}
+
+@keyframes glowMove2{
+    from{transform:translate(0,0)}
+    to{transform:translate(-150px,-100px)}
+}
+
+/* =====================================================
+   FORMÜLLER
+===================================================== */
+
+.formula{
+    position:fixed;
+    color:rgba(192,132,252,.12);
+    font-weight:800;
+    pointer-events:none;
+    z-index:-2;
+    user-select:none;
+    animation:formulaFloat 10s ease-in-out infinite;
+}
+
+.f1{top:13%;left:6%;font-size:26px}
+.f2{top:28%;right:7%;font-size:32px}
+.f3{top:48%;left:8%;font-size:22px}
+.f4{top:65%;right:10%;font-size:27px}
+.f5{top:82%;left:14%;font-size:25px}
+.f6{top:91%;right:15%;font-size:20px}
+.f7{top:39%;left:48%;font-size:19px}
+.f8{top:18%;left:45%;font-size:22px}
+
+@keyframes formulaFloat{
+    0%,100%{transform:translateY(0) rotate(0deg)}
+    50%{transform:translateY(-25px) rotate(4deg)}
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    z-index:1000;
+    padding:18px 5%;
+    background:rgba(8,5,17,.60);
+    backdrop-filter:blur(22px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+nav{
+    max-width:1250px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:950;
+    letter-spacing:-1px;
+    background:linear-gradient(90deg,#a855f7,#ec4899,#67e8f9);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.nav-right{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.nav-btn{
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.06);
+    color:white;
+    width:44px;
+    height:44px;
+    border-radius:14px;
+    cursor:pointer;
+    font-size:19px;
+    transition:.3s;
+}
+
+.nav-btn:hover{
+    transform:translateY(-3px);
+    border-color:var(--purple);
+    box-shadow:0 10px 30px rgba(139,92,246,.2);
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+    min-height:100vh;
+    max-width:1250px;
+    margin:auto;
+    padding:155px 5% 100px;
+    display:grid;
+    grid-template-columns:1.05fr .95fr;
+    gap:70px;
+    align-items:center;
+}
+
+.hero-content{
+    animation:heroIn 1s ease forwards;
+}
+
+@keyframes heroIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:10px 16px;
+    border:1px solid rgba(192,132,252,.25);
+    background:rgba(139,92,246,.10);
+    color:#d8b4fe;
+    border-radius:999px;
+    font-weight:750;
+    margin-bottom:22px;
+    box-shadow:0 0 30px rgba(139,92,246,.10);
+}
+
+.hero h1{
+    font-size:clamp(48px,6vw,82px);
+    line-height:.98;
+    letter-spacing:-4px;
+    margin-bottom:25px;
+}
+
+.gradient-text{
+    background:linear-gradient(100deg,#a855f7,#ec4899,#67e8f9);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero-description{
+    color:var(--muted);
+    font-size:19px;
+    line-height:1.8;
+    max-width:700px;
+}
+
+.hero-buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:13px;
+    margin-top:32px;
+}
+
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:15px 23px;
+    border-radius:15px;
+    font-weight:850;
+    transition:.3s;
+    border:1px solid var(--border);
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+}
+
+.btn-primary{
+    color:white;
+    background:linear-gradient(135deg,#7c3aed,#a855f7,#ec4899);
+    box-shadow:0 15px 45px rgba(139,92,246,.25);
+}
+
+.btn-secondary{
+    color:white;
+    background:rgba(255,255,255,.06);
+}
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-visual{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.physics-orb{
+    width:min(440px,80vw);
+    height:min(440px,80vw);
+    border-radius:50%;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:
+        radial-gradient(circle at center,rgba(168,85,247,.22),transparent 45%);
+    animation:orbFloat 6s ease-in-out infinite;
+}
+
+@keyframes orbFloat{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-12px)}
+}
+
+.ring{
+    position:absolute;
+    width:100%;
+    height:45%;
+    border:1px solid rgba(192,132,252,.45);
+    border-radius:50%;
+}
+
+.ring.r1{transform:rotate(25deg)}
+.ring.r2{transform:rotate(-25deg)}
+.ring.r3{transform:rotate(90deg)}
+
+.nucleus{
+    width:125px;
+    height:125px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:56px;
+    font-weight:900;
+    background:linear-gradient(135deg,#7c3aed,#ec4899);
+    box-shadow:
+        0 0 50px rgba(168,85,247,.45),
+        0 0 120px rgba(168,85,247,.15);
+    z-index:2;
+}
+
+.electron{
+    position:absolute;
+    width:14px;
+    height:14px;
+    background:#67e8f9;
+    border-radius:50%;
+    box-shadow:0 0 25px #67e8f9;
+}
+
+.e1{
+    top:18%;
+    left:50%;
+    animation:electron1 4s linear infinite;
+}
+
+.e2{
+    bottom:23%;
+    right:18%;
+    animation:electron2 5s linear infinite;
+}
+
+.e3{
+    left:16%;
+    top:48%;
+    animation:electron3 4.5s linear infinite;
+}
+
+@keyframes electron1{
+    from{transform:rotate(0deg) translateX(180px) rotate(0deg)}
+    to{transform:rotate(360deg) translateX(180px) rotate(-360deg)}
+}
+
+@keyframes electron2{
+    from{transform:rotate(0deg) translateX(170px) rotate(0deg)}
+    to{transform:rotate(-360deg) translateX(170px) rotate(360deg)}
+}
+
+@keyframes electron3{
+    from{transform:rotate(0deg) translateX(165px) rotate(0deg)}
+    to{transform:rotate(360deg) translateX(165px) rotate(-360deg)}
+}
+
+/* =====================================================
+   SECTION
+===================================================== */
+
+section{
+    max-width:1250px;
+    margin:auto;
+    padding:105px 5%;
+}
+
+.section-heading{
+    text-align:center;
+    margin-bottom:55px;
+}
+
+.section-kicker{
+    color:#c084fc;
+    text-transform:uppercase;
+    font-weight:850;
+    letter-spacing:2px;
+    font-size:13px;
+    margin-bottom:12px;
+}
+
+.section-title{
+    font-size:clamp(34px,4vw,52px);
+    letter-spacing:-2px;
+    margin-bottom:15px;
+}
+
+.section-description{
+    max-width:730px;
+    margin:auto;
+    color:var(--muted);
+    line-height:1.8;
+}
+
+/* =====================================================
+   FEATURE CARDS
+===================================================== */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    position:relative;
+    overflow:hidden;
+    padding:34px;
+    border-radius:27px;
+    border:1px solid var(--border);
+    background:linear-gradient(145deg,rgba(255,255,255,.09),rgba(255,255,255,.035));
+    box-shadow:var(--shadow);
+    transition:.35s;
+}
+
+.feature::before{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(168,85,247,.13);
+    filter:blur(50px);
+    right:-80px;
+    top:-80px;
+}
+
+.feature:hover{
+    transform:translateY(-9px);
+    border-color:rgba(192,132,252,.35);
+    box-shadow:0 30px 90px rgba(124,58,237,.16);
+}
+
+.feature-icon{
+    width:60px;
+    height:60px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:29px;
+    background:rgba(139,92,246,.13);
+    margin-bottom:20px;
+}
+
+.feature h3{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.feature p{
+    color:var(--muted);
+    line-height:1.75;
+}
+
+/* =====================================================
+   DERSLER
+===================================================== */
+
+.lesson-intro{
+    display:grid;
+    grid-template-columns:.85fr 1.15fr;
+    gap:30px;
+    margin-bottom:35px;
+}
+
+.lesson-intro-box{
+    padding:35px;
+    border-radius:28px;
+    border:1px solid var(--border);
+    background:linear-gradient(135deg,rgba(139,92,246,.13),rgba(255,255,255,.035));
+}
+
+.lesson-intro-box h3{
+    font-size:28px;
+    margin-bottom:13px;
+}
+
+.lesson-intro-box p{
+    color:var(--muted);
+    line-height:1.8;
+}
+
+.lesson-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:18px;
+}
+
+.lesson{
+    position:relative;
+    overflow:hidden;
+    padding:31px;
+    min-height:300px;
+    border:1px solid var(--border);
+    border-radius:26px;
+    background:rgba(255,255,255,.055);
+    transition:.35s;
+}
+
+.lesson:hover{
+    transform:translateY(-8px);
+    border-color:rgba(168,85,247,.45);
+    box-shadow:0 25px 70px rgba(124,58,237,.16);
+}
+
+.lesson::after{
+    content:"";
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    right:-80px;
+    bottom:-90px;
+    background:rgba(168,85,247,.12);
+    filter:blur(25px);
+}
+
+.lesson-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.lesson-icon{
+    width:58px;
+    height:58px;
+    border-radius:17px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:29px;
+    background:rgba(139,92,246,.13);
+}
+
+.level{
+    padding:7px 11px;
+    border-radius:10px;
+    background:rgba(192,132,252,.11);
+    color:#d8b4fe;
+    font-size:12px;
+    font-weight:900;
+    letter-spacing:.6px;
+}
+
+.lesson h3{
+    font-size:25px;
+    margin-bottom:12px;
+}
+
+.lesson p{
+    color:var(--muted);
+    line-height:1.75;
+    margin-bottom:17px;
+}
+
+.lesson ul{
+    list-style:none;
+    display:grid;
+    gap:8px;
+}
+
+.lesson li{
+    color:#d8d0e3;
+    font-size:14px;
+}
+
+.lesson li::before{
+    content:"✓";
+    color:#c084fc;
+    font-weight:900;
+    margin-right:8px;
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about{
+    display:grid;
+    grid-template-columns:.8fr 1.2fr;
+    gap:35px;
+    align-items:stretch;
+}
+
+.about-profile{
+    position:relative;
+    min-height:400px;
+    border-radius:30px;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 35%,rgba(168,85,247,.32),transparent 35%),
+        linear-gradient(145deg,#211037,#10091c);
+    border:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.about-orbit{
+    width:230px;
+    height:230px;
+    border:1px solid rgba(192,132,252,.4);
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+}
+
+.about-orbit::before,
+.about-orbit::after{
+    content:"";
+    position:absolute;
+    border:1px solid rgba(192,132,252,.3);
+    border-radius:50%;
+}
+
+.about-orbit::before{
+    width:100%;
+    height:45%;
+    transform:rotate(45deg);
+}
+
+.about-orbit::after{
+    width:45%;
+    height:100%;
+    transform:rotate(45deg);
+}
+
+.about-center{
+    width:105px;
+    height:105px;
+    border-radius:50%;
+    background:linear-gradient(135deg,#8b5cf6,#ec4899);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:45px;
+    box-shadow:0 0 60px rgba(168,85,247,.4);
+}
+
+.about-content{
+    padding:42px;
+    border-radius:30px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.055);
+}
+
+.about-content h3{
+    font-size:31px;
+    margin-bottom:7px;
+}
+
+.about-degree{
+    color:#c084fc;
+    font-weight:850;
+    font-size:18px;
+    margin-bottom:25px;
+}
+
+.about-content p{
+    color:var(--muted);
+    line-height:1.85;
+    margin-bottom:20px;
+}
+
+.about-points{
+    display:grid;
+    gap:12px;
+}
+
+.about-point{
+    display:flex;
+    gap:12px;
+    align-items:flex-start;
+    color:#ddd5e7;
+}
+
+.about-point span{
+    color:#c084fc;
+    font-weight:900;
+}
+
+/* =====================================================
+   1 DAKİKA
+===================================================== */
+
+.mini-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.mini{
+    padding:28px;
+    border-radius:25px;
+    border:1px solid var(--border);
+    background:rgba(255,255,255,.05);
+    transition:.3s;
+}
+
+.mini:hover{
+    transform:translateY(-6px);
+    border-color:rgba(192,132,252,.35);
+}
+
+.mini-formula{
+    font-size:28px;
+    font-weight:950;
+    color:#c084fc;
+    margin-bottom:17px;
+}
+
+.mini h3{
+    margin-bottom:9px;
+}
+
+.mini p{
+    color:var(--muted);
+    line-height:1.7;
+}
+
+/* =====================================================
+   SÜREÇ
+===================================================== */
+
+.steps{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+}
+
+.step{
+    text-align:center;
+    padding:30px 20px;
+}
+
+.step-number{
+    width:65px;
+    height:65px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:950;
+    background:linear-gradient(135deg,#7c3aed,#ec4899);
+    box-shadow:0 10px 35px rgba(139,92,246,.25);
+}
+
+.step h3{
+    margin-bottom:10px;
+}
+
+.step p{
+    color:var(--muted);
+    line-height:1.65;
+    font-size:14px;
+}
+
+/* =====================================================
+   CTA
+===================================================== */
+
+.cta{
+    position:relative;
+    overflow:hidden;
+    border-radius:35px;
+    padding:75px 30px;
+    text-align:center;
+    background:
+        radial-gradient(circle at 20% 30%,rgba(255,255,255,.16),transparent 25%),
+        radial-gradient(circle at 80% 70%,rgba(103,232,249,.13),transparent 25%),
+        linear-gradient(135deg,#6d28d9,#a855f7,#db2777);
+    box-shadow:0 30px 100px rgba(124,58,237,.25);
+}
+
+.cta::before{
+    content:"∑   ∫   E=mc²   F=ma   π   Δx";
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:48px;
+    font-weight:950;
+    opacity:.06;
+    word-spacing:40px;
+    transform:rotate(-8deg);
+}
+
+.cta-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta h2{
+    font-size:clamp(32px,4vw,52px);
+    margin-bottom:15px;
+}
+
+.cta p{
+    max-width:700px;
+    margin:0 auto 28px;
+    line-height:1.8;
+    color:rgba(255,255,255,.86);
+}
+
+/* =====================================================
+   İLETİŞİM
+===================================================== */
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.contact{
+    text-align:center;
+    padding:35px;
+    border-radius:27px;
+    background:rgba(255,255,255,.055);
+    border:1px solid var(--border);
+    transition:.3s;
+}
+
+.contact:hover{
+    transform:translateY(-7px);
+    border-color:rgba(192,132,252,.35);
+}
+
+.contact-icon{
+    font-size:35px;
+    margin-bottom:15px;
+}
+
+.contact h3{
+    margin-bottom:10px;
+}
+
+.contact p{
+    color:var(--muted);
+    margin-bottom:20px;
+    word-break:break-word;
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+footer{
+    text-align:center;
+    padding:45px 20px;
+    color:#8f849f;
+    border-top:1px solid rgba(255,255,255,.08);
+}
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:62px;
+    height:62px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#25D366;
+    color:white;
+    font-size:29px;
+    z-index:999;
+    box-shadow:0 12px 40px rgba(37,211,102,.25);
+    transition:.3s;
+}
+
+.whatsapp:hover{
+    transform:scale(1.1) translateY(-3px);
+}
+
+/* =====================================================
+   SCROLL ANIMATION
+===================================================== */
+
+.reveal{
+    opacity:0;
+    transform:translateY(35px);
+    transition:opacity .8s ease,transform .8s ease;
+}
+
+.reveal.visible{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media(max-width:950px){
+
+    .hero{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-description{
+        margin:auto;
+    }
+
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .features{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .lesson-intro{
+        grid-template-columns:1fr;
+    }
+
+    .about{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .mini-grid{
+        grid-template-columns:1fr 1fr;
+    }
+}
+
+@media(max-width:650px){
+
+    header{
+        padding:14px 5%;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .hero{
+        padding-top:125px;
+    }
+
+    .hero h1{
+        font-size:47px;
+        letter-spacing:-2.5px;
+    }
+
+    .hero-description{
+        font-size:17px;
+    }
+
+    .features,
+    .lesson-list,
+    .mini-grid,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .steps{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:35px;
+    }
+
+    .about-content{
+        padding:30px 23px;
+    }
+
+    .lesson{
+        min-height:auto;
+    }
+
+    .cta{
+        padding:55px 22px;
+    }
+
+    .physics-orb{
+        width:320px;
+        height:320px;
+    }
+
+    .nucleus{
+        width:95px;
+        height:95px;
+        font-size:42px;
+    }
+
+    .e1{
+        animation-name:electron1Mobile;
+    }
+
+    .e2{
+        animation-name:electron2Mobile;
+    }
+
+    .e3{
+        animation-name:electron3Mobile;
+    }
+
+    @keyframes electron1Mobile{
+        from{transform:rotate(0deg) translateX(125px)}
+        to{transform:rotate(360deg) translateX(125px)}
+    }
+
+    @keyframes electron2Mobile{
+        from{transform:rotate(0deg) translateX(120px)}
+        to{transform:rotate(-360deg) translateX(120px)}
+    }
+
+    @keyframes electron3Mobile{
+        from{transform:rotate(0deg) translateX(115px)}
+        to{transform:rotate(360deg) translateX(115px)}
+    }
+}
+
+@media(prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation:none!important;
+        transition:none!important;
+        scroll-behavior:auto!important;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- =========================
-       ARKA PLAN FORMÜLLERİ
-  ========================== -->
+<div class="grid-bg"></div>
 
-  <div class="formula" style="top:12%;left:7%;">F = ma</div>
-  <div class="formula" style="top:25%;left:83%;">E = mc²</div>
-  <div class="formula" style="top:44%;left:10%;">v = Δx / Δt</div>
-  <div class="formula" style="top:62%;left:86%;">∑F = ma</div>
-  <div class="formula" style="top:77%;left:7%;">λ = h/p</div>
-  <div class="formula" style="top:88%;left:78%;">P = F/A</div>
-  <div class="formula" style="top:52%;left:47%;">W = F·x</div>
-  <div class="formula" style="top:18%;left:48%;">p = mv</div>
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-  <!-- =========================
-       HEADER
-  ========================== -->
+<canvas id="particles"></canvas>
 
-  <header>
+<div class="formula f1">F = ma</div>
+<div class="formula f2">E = mc²</div>
+<div class="formula f3">v = Δx / Δt</div>
+<div class="formula f4">∑F = ma</div>
+<div class="formula f5">λ = h/p</div>
+<div class="formula f6">P = F/A</div>
+<div class="formula f7">W = F · x</div>
+<div class="formula f8">p = mv</div>
 
-    <nav>
+<header>
 
-      <a href="#anasayfa" class="logo">
-        ZeynepNazFizik
-      </a>
+<nav>
 
-      <div class="nav-buttons">
+<a href="#anasayfa" class="logo">
+ZeynepNazFizik
+</a>
 
-        <button
-          class="icon-btn"
-          onclick="toggleDark()"
-          aria-label="Karanlık modu aç/kapat">
-          ☾
-        </button>
+<div class="nav-right">
 
-        <a
-          class="icon-btn"
-          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-          target="_blank"
-          aria-label="WhatsApp">
-          ☎
-        </a>
+<button class="nav-btn" onclick="toggleTheme()" aria-label="Tema değiştir">
+☾
+</button>
 
-      </div>
+<a
+class="nav-btn"
+href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+target="_blank">
+☎
+</a>
 
-    </nav>
+</div>
 
-  </header>
+</nav>
 
-  <main>
+</header>
 
-    <!-- =========================
-         ANA SAYFA
-    ========================== -->
+<main>
 
-    <section class="hero" id="anasayfa">
+<!-- HERO -->
 
-      <div>
+<section class="hero" id="anasayfa">
 
-        <div class="badge">
-          🎓 Online Birebir Ders
-        </div>
+<div class="hero-content">
 
-        <h1>
-          Fiziği ve matematiği
-          <span>birlikte keşfedelim.</span>
-        </h1>
+<div class="badge">
+✦ Online Birebir Eğitim
+</div>
 
-        <p>
-          Ortaokul ve lise seviyesinde matematik ve fizik;
-          TYT ve AYT fizik dersleriyle okul hayatında ve sınavlarda
-          daha sağlam bir temel oluştur.
-        </p>
+<h1>
+Fiziği ve matematiği
+<span class="gradient-text">
+gerçekten anlamaya
+</span>
+başla.
+</h1>
 
-        <div class="hero-buttons">
+<p class="hero-description">
+Ortaokul ve lise matematik & fizik dersleri,
+TYT ve AYT fizik hazırlığı ve öğrencinin seviyesine
+özel online birebir eğitim.
+</p>
 
-          <a
-            href="#dersler"
-            class="btn btn-primary">
-            Dersleri İncele →
-          </a>
+<div class="hero-buttons">
 
-          <a
-            href="#iletisim"
-            class="btn btn-secondary">
-            Bilgi Al
-          </a>
+<a href="#dersler" class="btn btn-primary">
+Dersleri Keşfet →
+</a>
 
-        </div>
+<a href="#iletisim" class="btn btn-secondary">
+Bilgi Al
+</a>
 
-      </div>
+</div>
 
-      <div class="orbit">
+</div>
 
-        <div class="atom">
-          ∑
-        </div>
+<div class="hero-visual">
 
-      </div>
+<div class="physics-orb">
 
-    </section>
+<div class="ring r1"></div>
+<div class="ring r2"></div>
+<div class="ring r3"></div>
 
-    <!-- =========================
-         NEDEN ZEYNEPNAZFİZİK
-    ========================== -->
+<div class="electron e1"></div>
+<div class="electron e2"></div>
+<div class="electron e3"></div>
 
-    <section id="neden">
+<div class="nucleus">
+∑
+</div>
 
-      <h2 class="section-title">
-        Neden ZeynepNazFizik?
-      </h2>
+</div>
 
-      <p class="section-subtitle">
-        Konuları ezberlemek yerine mantığını anlamaya,
-        eksikleri belirlemeye ve öğrencinin seviyesine göre
-        ilerlemeye odaklanan online ders sistemi.
-      </p>
+</div>
 
-      <div class="cards">
+</section>
 
-        <div class="card">
 
-          <div class="card-icon">
-            🎯
-          </div>
+<!-- NEDEN -->
 
-          <h3>
-            Kişiye Özel İlerleme
-          </h3>
+<section id="neden" class="reveal">
 
-          <p>
-            Öğrencinin seviyesine, hedeflerine ve eksiklerine
-            göre ders süreci şekillendirilir.
-          </p>
+<div class="section-heading">
 
-        </div>
+<div class="section-kicker">
+NEDEN BİZ?
+</div>
 
-        <div class="card">
+<h2 class="section-title">
+Ders sadece ders değildir.
+</h2>
 
-          <div class="card-icon">
-            💡
-          </div>
+<p class="section-description">
+Amaç yalnızca konuyu bitirmek değil;
+öğrencinin gerçekten anlayabileceği bir çalışma
+sistemi oluşturmak.
+</p>
 
-          <h3>
-            Mantığını Anla
-          </h3>
+</div>
 
-          <p>
-            Formülleri yalnızca ezberlemek yerine konuların
-            arkasındaki mantığı anlamaya odaklanılır.
-          </p>
+<div class="features">
 
-        </div>
+<div class="feature">
 
-        <div class="card">
+<div class="feature-icon">
+🎯
+</div>
 
-          <div class="card-icon">
-            💻
-          </div>
+<h3>
+Kişiye Özel Program
+</h3>
 
-          <h3>
-            Online ve Esnek
-          </h3>
+<p>
+Her öğrencinin seviyesi, hedefi ve eksikleri farklı.
+Bu yüzden ders süreci öğrencinin ihtiyaçlarına
+göre şekillendirilir.
+</p>
 
-          <p>
-            Dersler online olarak gerçekleştirilir ve öğrencinin
-            programına uygun şekilde planlanabilir.
-          </p>
+</div>
 
-        </div>
+<div class="feature">
 
-      </div>
+<div class="feature-icon">
+🧠
+</div>
 
-    </section>
+<h3>
+Ezber Değil, Mantık
+</h3>
 
-    <!-- =========================
-         DERSLER
-    ========================== -->
+<p>
+Formülü ezberletmek yerine nereden geldiğini,
+ne anlama geldiğini ve hangi durumda kullanılacağını
+anlamaya odaklanıyoruz.
+</p>
 
-    <section id="dersler">
+</div>
 
-      <h2 class="section-title">
-        Dersler
-      </h2>
+<div class="feature">
 
-      <p class="section-subtitle">
-        Ortaokuldan lise seviyesine, okul derslerinden
-        TYT ve AYT hazırlığına kadar farklı seviyelere
-        yönelik online ders seçenekleri.
-      </p>
+<div class="feature-icon">
+🚀
+</div>
 
-      <div class="lesson-grid">
+<h3>
+Sınava Hazırlık
+</h3>
 
-        <div class="lesson-card">
+<p>
+TYT ve AYT hedefleri doğrultusunda konu çalışması,
+soru çözümü ve sınav pratiğini birlikte yürütüyoruz.
+</p>
 
-          <div class="lesson-icon">
-            ➗
-          </div>
+</div>
 
-          <h3>
-            Ortaokul Matematik
-          </h3>
+</div>
 
-          <p>
-            Ortaokul matematik konularının anlaşılması,
-            okul sınavlarına hazırlık ve soru çözümü.
-          </p>
+</section>
 
-          <span class="tag">
-            ORTAOKUL
-          </span>
 
-        </div>
+<!-- DERSLER -->
 
-        <div class="lesson-card">
+<section id="dersler" class="reveal">
 
-          <div class="lesson-icon">
-            ⚛️
-          </div>
+<div class="section-heading">
 
-          <h3>
-            Ortaokul Fizik
-          </h3>
+<div class="section-kicker">
+DERSLER
+</div>
 
-          <p>
-            Fen bilimleri kapsamında fizik konularını
-            temelinden anlamaya yönelik çalışmalar.
-          </p>
+<h2 class="section-title">
+Sana uygun dersi bul.
+</h2>
 
-          <span class="tag">
-            ORTAOKUL
-          </span>
+<p class="section-description">
+Ortaokuldan lise seviyesine, okul derslerinden
+üniversite sınavına kadar farklı ihtiyaçlara
+yönelik ders seçenekleri.
+</p>
 
-        </div>
+</div>
 
-        <div class="lesson-card">
 
-          <div class="lesson-icon">
-            📐
-          </div>
+<div class="lesson-intro">
 
-          <h3>
-            Lise Matematik
-          </h3>
+<div class="lesson-intro-box">
 
-          <p>
-            Lise matematik konuları, okul sınavları,
-            konu eksikleri ve soru çözümü.
-          </p>
+<h3>
+📚 Okul Dersleri
+</h3>
 
-          <span class="tag">
-            LİSE
-          </span>
+<p>
+Ortaokul ve lise öğrencileri için matematik ve fizik
+derslerinde konu eksiklerini kapatmaya, okul
+sınavlarına hazırlanmaya ve soru çözme becerisini
+geliştirmeye yönelik çalışmalar.
+</p>
 
-        </div>
+</div>
 
-        <div class="lesson-card">
+<div class="lesson-intro-box">
 
-          <div class="lesson-icon">
-            🔬
-          </div>
+<h3>
+🎓 TYT & AYT
+</h3>
 
-          <h3>
-            Lise Fizik
-          </h3>
+<p>
+YKS hazırlığında fizik konularını sistemli şekilde
+öğrenmek, farklı soru tiplerini görmek ve sınav
+stratejisini geliştirmek isteyen öğrenciler için
+TYT ve AYT fizik dersleri.
+</p>
 
-          <p>
-            Lise fizik konularının mantığını anlamaya,
-            soru çözme becerisini geliştirmeye yönelik dersler.
-          </p>
+</div>
 
-          <span class="tag">
-            LİSE
-          </span>
+</div>
 
-        </div>
 
-        <div class="lesson-card">
+<div class="lesson-list">
 
-          <div class="lesson-icon">
-            🎯
-          </div>
 
-          <h3>
-            TYT Fizik
-          </h3>
+<!-- ORTAOKUL MAT -->
 
-          <p>
-            TYT fizik konuları, soru çözümü ve sınav
-            odaklı çalışma programı.
-          </p>
+<div class="lesson">
 
-          <span class="tag">
-            TYT
-          </span>
+<div class="lesson-top">
 
-        </div>
+<div class="lesson-icon">
+➗
+</div>
 
-        <div class="lesson-card">
+<div class="level">
+ORTAOKUL
+</div>
 
-          <div class="lesson-icon">
-            🚀
-          </div>
+</div>
 
-          <h3>
-            AYT Fizik
-          </h3>
+<h3>
+Ortaokul Matematik
+</h3>
 
-          <p>
-            AYT fizik konuları, ileri seviye soru çözümü
-            ve üniversite sınavına hazırlık.
-          </p>
+<p>
+Temel matematik becerilerini güçlendirmek ve
+konuları sağlam bir temelle öğrenmek isteyen
+öğrenciler için.
+</p>
 
-          <span class="tag">
-            AYT
-          </span>
+<ul>
+<li>Temel matematik konuları</li>
+<li>Yeni nesil soru çözümü</li>
+<li>Okul sınavlarına hazırlık</li>
+<li>Konu eksiklerini kapatma</li>
+</ul>
 
-        </div>
+</div>
 
-      </div>
 
-    </section>
+<!-- ORTAOKUL FİZİK -->
 
-    <!-- =========================
-         HAKKIMDA
-    ========================== -->
+<div class="lesson">
 
-    <section id="hakkimda">
+<div class="lesson-top">
 
-      <h2 class="section-title">
-        Hakkımda
-      </h2>
+<div class="lesson-icon">
+⚛️
+</div>
 
-      <p class="section-subtitle">
-        Fizik ve matematiği öğrenciler için daha anlaşılır,
-        sistemli ve keyifli hale getirmeyi amaçlıyorum.
-      </p>
+<div class="level">
+ORTAOKUL
+</div>
 
-      <div class="about-box">
+</div>
 
-        <h3>
-          Zeynep Naz Bilgütay
-        </h3>
+<h3>
+Ortaokul Fizik
+</h3>
 
-        <div class="university">
-          Boğaziçi Üniversitesi
-        </div>
+<p>
+Fen bilimleri içerisindeki fizik konularını
+günlük hayatla ilişkilendirerek daha anlaşılır
+hale getirmeye yönelik dersler.
+</p>
 
-        <p>
-          <strong>
-            Fizik Öğretmenliği (İngilizce)
-          </strong>
-        </p>
+<ul>
+<li>Kuvvet ve hareket</li>
+<li>Enerji</li>
+<li>Elektrik</li>
+<li>Işık ve ses</li>
+</ul>
 
-        <br>
+</div>
 
-        <p>
-          Derslerde öğrencinin yalnızca doğru cevabı bulmasını
-          değil, sorunun neden ve nasıl çözüldüğünü anlamasını
-          hedefliyorum. Konu anlatımı, örnek sorular ve öğrencinin
-          ihtiyaçlarına göre şekillenen çalışma süreciyle ilerliyoruz.
-        </p>
 
-      </div>
+<!-- LİSE MAT -->
 
-    </section>
+<div class="lesson">
 
-    <!-- =========================
-         FİZİKTEN 1 DAKİKA
-    ========================== -->
+<div class="lesson-top">
 
-    <section id="fizik-1-dakika">
+<div class="lesson-icon">
+📐
+</div>
 
-      <h2 class="section-title">
-        Fizikten 1 Dakika
-      </h2>
+<div class="level">
+LİSE
+</div>
 
-      <p class="section-subtitle">
-        Fizikle ilgili kısa, anlaşılır ve günlük hayattan
-        örneklerle hazırlanmış mini bilgiler.
-      </p>
+</div>
 
-      <div class="mini-grid">
+<h3>
+Lise Matematik
+</h3>
 
-        <div class="mini-card">
+<p>
+Lise matematik konularında eksiklerini tamamlamak,
+soru çözme hızını geliştirmek ve okul sınavlarına
+hazırlanmak isteyen öğrenciler için.
+</p>
 
-          <div class="formula-big">
-            F = ma
-          </div>
+<ul>
+<li>Fonksiyonlar</li>
+<li>Polinomlar</li>
+<li>Trigonometri</li>
+<li>Limit, türev ve integral</li>
+</ul>
 
-          <h3>
-            Kuvvet ve İvme
-          </h3>
+</div>
 
-          <p>
-            Bir cismin ivmesi, üzerine etki eden net kuvvet
-            ve kütlesiyle ilişkilidir.
-          </p>
 
-        </div>
+<!-- LİSE FİZİK -->
 
-        <div class="mini-card">
+<div class="lesson">
 
-          <div class="formula-big">
-            E = mc²
-          </div>
+<div class="lesson-top">
 
-          <h3>
-            Kütle ve Enerji
-          </h3>
+<div class="lesson-icon">
+🔬
+</div>
 
-          <p>
-            Einstein'ın ünlü bağıntısı kütle ile enerjinin
-            birbirleriyle ilişkisini ifade eder.
-          </p>
+<div class="level">
+LİSE
+</div>
 
-        </div>
+</div>
 
-        <div class="mini-card">
+<h3>
+Lise Fizik
+</h3>
 
-          <div class="formula-big">
-            v = Δx / Δt
-          </div>
+<p>
+Lise fizik konularını temelinden başlayarak
+anlamak ve farklı soru tiplerinde uygulayabilmek
+için kapsamlı çalışma.
+</p>
 
-          <h3>
-            Hız
-          </h3>
+<ul>
+<li>Hareket ve kuvvet</li>
+<li>Enerji ve momentum</li>
+<li>Elektrik ve manyetizma</li>
+<li>Dalgalar ve optik</li>
+</ul>
 
-          <p>
-            Bir cismin konumundaki değişimin zamana oranı
-            ortalama hız hakkında bilgi verir.
-          </p>
+</div>
 
-        </div>
 
-        <div class="mini-card">
+<!-- TYT -->
 
-          <div class="formula-big">
-            W = F·x
-          </div>
+<div class="lesson">
 
-          <h3>
-            İş
-          </h3>
+<div class="lesson-top">
 
-          <p>
-            Bir kuvvet cismin hareket yönünde yer değiştirmesine
-            neden olduğunda fiziksel anlamda iş yapılır.
-          </p>
+<div class="lesson-icon">
+🎯
+</div>
 
-        </div>
+<div class="level">
+TYT
+</div>
 
-        <div class="mini-card">
+</div>
 
-          <div class="formula-big">
-            P = F/A
-          </div>
+<h3>
+TYT Fizik
+</h3>
 
-          <h3>
-            Basınç
-          </h3>
+<p>
+TYT fizik konularını sistemli şekilde tamamlamak,
+soru tarzlarını tanımak ve sınavda zamanı etkili
+kullanabilmek için.
+</p>
 
-          <p>
-            Katılarda basınç, uygulanan kuvvet ve temas alanı
-            arasındaki ilişkiyle ifade edilir.
-          </p>
+<ul>
+<li>TYT konu anlatımı</li>
+<li>Yeni nesil sorular</li>
+<li>Deneme soru analizi</li>
+<li>Sınav odaklı tekrar</li>
+</ul>
 
-        </div>
+</div>
 
-        <div class="mini-card">
 
-          <div class="formula-big">
-            p = mv
-          </div>
+<!-- AYT -->
 
-          <h3>
-            Momentum
-          </h3>
+<div class="lesson">
 
-          <p>
-            Bir cismin momentumu kütlesi ve hızının
-            çarpımıyla ifade edilir.
-          </p>
+<div class="lesson-top">
 
-        </div>
+<div class="lesson-icon">
+🚀
+</div>
 
-      </div>
+<div class="level">
+AYT
+</div>
 
-    </section>
+</div>
 
-    <!-- =========================
-         NASIL İLERLİYORUZ
-    ========================== -->
+<h3>
+AYT Fizik
+</h3>
 
-    <section id="surec">
+<p>
+AYT fiziğin daha derin konularını anlamak,
+zorlayıcı soru tiplerini çözebilmek ve YKS
+hedefine yönelik ilerlemek için.
+</p>
 
-      <h2 class="section-title">
-        Nasıl İlerliyoruz?
-      </h2>
+<ul>
+<li>AYT konu anlatımı</li>
+<li>İleri seviye soru çözümü</li>
+<li>ÖSYM tarzı sorular</li>
+<li>Konu tekrarları</li>
+</ul>
 
-      <p class="section-subtitle">
-        Ders sürecini öğrencinin ihtiyaçlarına göre
-        adım adım şekillendiriyoruz.
-      </p>
+</div>
 
-      <div class="steps">
+</div>
 
-        <div class="step">
+</section>
 
-          <div class="step-number">
-            1
-          </div>
 
-          <h3>
-            Tanışıyoruz
-          </h3>
+<!-- HAKKIMDA -->
 
-          <p>
-            Öğrencinin seviyesi, hedefleri ve ihtiyaçları
-            hakkında konuşuyoruz.
-          </p>
+<section id="hakkimda" class="reveal">
 
-        </div>
+<div class="section-heading">
 
-        <div class="step">
+<div class="section-kicker">
+HAKKIMDA
+</div>
 
-          <div class="step-number">
-            2
-          </div>
+<h2 class="section-title">
+Dersin arkasındaki kişi.
+</h2>
 
-          <h3>
-            Eksikleri Belirliyoruz
-          </h3>
+</div>
 
-          <p>
-            Hangi konularda desteğe ihtiyaç olduğunu
-            birlikte belirliyoruz.
-          </p>
+<div class="about">
 
-        </div>
+<div class="about-profile">
 
-        <div class="step">
+<div class="about-orbit">
 
-          <div class="step-number">
-            3
-          </div>
+<div class="about-center">
+⚛
+</div>
 
-          <h3>
-            Derslere Başlıyoruz
-          </h3>
+</div>
 
-          <p>
-            Öğrencinin seviyesine uygun şekilde konu
-            anlatımı ve soru çözümü yapıyoruz.
-          </p>
+</div>
 
-        </div>
+<div class="about-content">
 
-        <div class="step">
+<h3>
+Zeynep Naz Bilgütay
+</h3>
 
-          <div class="step-number">
-            4
-          </div>
+<div class="about-degree">
+Boğaziçi Üniversitesi · Fizik Öğretmenliği (İngilizce)
+</div>
 
-          <h3>
-            Gelişimi Takip Ediyoruz
-          </h3>
+<p>
+Fizik ve matematiğin öğrenciler için yalnızca
+formüllerden oluşan dersler olmadığını düşünüyorum.
+Doğru anlatıldığında bu derslerin oldukça eğlenceli
+ve anlaşılır hale gelebileceğine inanıyorum.
+</p>
 
-          <p>
-            Süreç boyunca eksikleri ve gelişimi
-            birlikte takip ediyoruz.
-          </p>
+<p>
+Derslerde öğrencinin seviyesini ve ihtiyaçlarını
+dikkate alarak konu anlatımı, örnekler ve soru
+çözümü üzerinden ilerliyorum.
+</p>
 
-        </div>
+<div class="about-points">
 
-      </div>
+<div class="about-point">
+<span>✓</span>
+Kişiye özel ders planı
+</div>
 
-    </section>
+<div class="about-point">
+<span>✓</span>
+Konu anlatımı + soru çözümü
+</div>
 
-    <!-- =========================
-         CTA
-    ========================== -->
+<div class="about-point">
+<span>✓</span>
+Okul ve sınav odaklı çalışma
+</div>
 
-    <section>
+<div class="about-point">
+<span>✓</span>
+Online birebir eğitim
+</div>
 
-      <div class="cta">
+</div>
 
-        <h2>
-          Dersler hakkında bilgi almak ister misin?
-        </h2>
+</div>
 
-        <p>
-          Ders içeriği, seviyeye uygun program ve çalışma
-          süreci hakkında doğrudan WhatsApp üzerinden
-          iletişime geçebilirsin.
-        </p>
+</div>
 
-        <a
-          class="btn"
-          style="background:white;color:#6d28d9;"
-          href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-          target="_blank">
+</section>
 
-          WhatsApp'tan Bilgi Al
 
-        </a>
+<!-- FİZİKTEN 1 DAKİKA -->
 
-      </div>
+<section id="fizik" class="reveal">
 
-    </section>
+<div class="section-heading">
 
-    <!-- =========================
-         İLETİŞİM
-    ========================== -->
+<div class="section-kicker">
+MERAKLI ZİHİNLERE
+</div>
 
-    <section id="iletisim">
+<h2 class="section-title">
+Fizikten 1 Dakika.
+</h2>
 
-      <h2 class="section-title">
-        İletişim
-      </h2>
+<p class="section-description">
+Fizik hayatın her yerinde. İşte birkaç küçük örnek.
+</p>
 
-      <p class="section-subtitle">
-        Dersler hakkında bilgi almak veya ders programı
-        hakkında konuşmak için iletişime geçebilirsin.
-      </p>
+</div>
 
-      <div class="contact-grid">
+<div class="mini-grid">
 
-        <div class="contact-card">
+<div class="mini">
 
-          <div class="icon">
-            📱
-          </div>
+<div class="mini-formula">
+F = ma
+</div>
 
-          <h3>
-            WhatsApp
-          </h3>
+<h3>
+Kuvvet
+</h3>
 
-          <p>
-            0553 923 38 62
-          </p>
+<p>
+Bir cismin ivmelenmesi, üzerine etki eden net
+kuvvet ve cismin kütlesiyle ilişkilidir.
+</p>
 
-          <br>
+</div>
 
-          <a
-            class="btn btn-primary"
-            href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-            target="_blank">
+<div class="mini">
 
-            WhatsApp'tan Yaz
+<div class="mini-formula">
+E = mc²
+</div>
 
-          </a>
+<h3>
+Enerji
+</h3>
 
-        </div>
+<p>
+Kütle ve enerji arasındaki ilişkiyi ifade eden
+Einstein'ın ünlü bağıntısı.
+</p>
 
-        <div class="contact-card">
+</div>
 
-          <div class="icon">
-            ✉️
-          </div>
+<div class="mini">
 
-          <h3>
-            E-posta
-          </h3>
+<div class="mini-formula">
+p = mv
+</div>
 
-          <p>
-            bilgutayzeynepnaz@gmail.com
-          </p>
+<h3>
+Momentum
+</h3>
 
-          <br>
+<p>
+Bir cismin hareket durumunu ifade eden önemli
+fiziksel büyüklüklerden biridir.
+</p>
 
-          <a
-            class="btn btn-secondary"
-            href="mailto:bilgutayzeynepnaz@gmail.com">
+</div>
 
-            E-posta Gönder
+<div class="mini">
 
-          </a>
+<div class="mini-formula">
+W = F·x
+</div>
 
-        </div>
+<h3>
+İş
+</h3>
 
-      </div>
+<p>
+Bir kuvvet cismin hareket yönünde yer değiştirmesine
+neden olduğunda fiziksel anlamda iş yapılır.
+</p>
 
-    </section>
+</div>
 
-  </main>
+<div class="mini">
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
+<div class="mini-formula">
+P = F/A
+</div>
 
-  <footer>
+<h3>
+Basınç
+</h3>
 
-    © 2026 ZeynepNazFizik —
-    Zeynep Naz Bilgütay
+<p>
+Bir yüzeye uygulanan kuvvetin yüzey alanına
+oranıyla ilişkili fiziksel büyüklüktür.
+</p>
 
-  </footer>
+</div>
 
-  <!-- =========================
-       FLOATING WHATSAPP
-  ========================== -->
+<div class="mini">
 
-  <a
-    class="whatsapp"
-    href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
-    target="_blank"
-    aria-label="WhatsApp">
+<div class="mini-formula">
+v = Δx/Δt
+</div>
 
-    ☎
+<h3>
+Hız
+</h3>
 
-  </a>
+<p>
+Konumdaki değişimin zamana oranı hareketi
+tanımlamamıza yardımcı olur.
+</p>
 
-  <script>
+</div>
 
-    /* =========================
-       DARK MODE
-    ========================== */
+</div>
 
-    function toggleDark() {
+</section>
 
-      document.body.classList.toggle("dark");
 
-      if (document.body.classList.contains("dark")) {
+<!-- SÜREÇ -->
 
-        localStorage.setItem("theme", "dark");
+<section id="surec" class="reveal">
 
-      } else {
+<div class="section-heading">
 
-        localStorage.setItem("theme", "light");
+<div class="section-kicker">
+DERS SÜRECİ
+</div>
 
-      }
+<h2 class="section-title">
+Nasıl ilerliyoruz?
+</h2>
+
+<p class="section-description">
+Karmaşıklaştırmadan, öğrencinin seviyesinden başlayarak.
+</p>
+
+</div>
+
+<div class="steps">
+
+<div class="step">
+
+<div class="step-number">
+1
+</div>
+
+<h3>
+Tanışıyoruz
+</h3>
+
+<p>
+Hedefleri, seviyeyi ve ihtiyaçları konuşuyoruz.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+2
+</div>
+
+<h3>
+Planlıyoruz
+</h3>
+
+<p>
+Eksiklere ve hedeflere göre çalışma planı oluşturuyoruz.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+3
+</div>
+
+<h3>
+Çalışıyoruz
+</h3>
+
+<p>
+Konu anlatımı, örnekler ve soru çözümüyle ilerliyoruz.
+</p>
+
+</div>
+
+<div class="step">
+
+<div class="step-number">
+4
+</div>
+
+<h3>
+Gelişiyoruz
+</h3>
+
+<p>
+Eksikleri takip ediyor ve çalışma sürecini güncelliyoruz.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CTA -->
+
+<section class="reveal">
+
+<div class="cta">
+
+<div class="cta-content">
+
+<h2>
+Hazırsan fiziği birlikte keşfedelim.
+</h2>
+
+<p>
+Dersler, program ve detaylar hakkında bilgi almak için
+doğrudan WhatsApp üzerinden iletişime geçebilirsin.
+</p>
+
+<a
+href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+target="_blank"
+class="btn"
+style="background:white;color:#6d28d9;">
+
+WhatsApp'tan Bilgi Al →
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- İLETİŞİM -->
+
+<section id="iletisim" class="reveal">
+
+<div class="section-heading">
+
+<div class="section-kicker">
+İLETİŞİM
+</div>
+
+<h2 class="section-title">
+Bir mesaj kadar yakınız.
+</h2>
+
+<p class="section-description">
+Dersler hakkında merak ettiğin her şeyi doğrudan sorabilirsin.
+</p>
+
+</div>
+
+<div class="contact-grid">
+
+<div class="contact">
+
+<div class="contact-icon">
+📱
+</div>
+
+<h3>
+WhatsApp
+</h3>
+
+<p>
+0553 923 38 62
+</p>
+
+<a
+href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+target="_blank"
+class="btn btn-primary">
+
+WhatsApp'tan Yaz
+
+</a>
+
+</div>
+
+<div class="contact">
+
+<div class="contact-icon">
+✉️
+</div>
+
+<h3>
+E-posta
+</h3>
+
+<p>
+bilgutayzeynepnaz@gmail.com
+</p>
+
+<a
+href="mailto:bilgutayzeynepnaz@gmail.com"
+class="btn btn-secondary">
+
+E-posta Gönder
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+
+<footer>
+
+© 2026 ZeynepNazFizik · Zeynep Naz Bilgütay
+
+</footer>
+
+
+<a
+class="whatsapp"
+href="https://wa.me/905539233862?text=Merhaba%2C%20ZeynepNazFizik%20%C3%BCzerinden%20dersler%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
+target="_blank"
+aria-label="WhatsApp">
+
+☎
+
+</a>
+
+
+<script>
+
+/* =====================================================
+   PARÇACIK SİSTEMİ
+===================================================== */
+
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+let particles=[];
+let mouse={x:null,y:null};
+
+function resizeCanvas(){
+
+    canvas.width=window.innerWidth;
+    canvas.height=window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+window.addEventListener("mousemove",(e)=>{
+
+    mouse.x=e.clientX;
+    mouse.y=e.clientY;
+
+});
+
+
+class Particle{
+
+    constructor(){
+
+        this.x=Math.random()*canvas.width;
+        this.y=Math.random()*canvas.height;
+
+        this.vx=(Math.random()-.5)*.35;
+        this.vy=(Math.random()-.5)*.35;
+
+        this.size=Math.random()*1.8+.5;
 
     }
 
-    if (localStorage.getItem("theme") === "dark") {
+    update(){
 
-      document.body.classList.add("dark");
+        this.x+=this.vx;
+        this.y+=this.vy;
+
+        if(this.x<0)this.x=canvas.width;
+        if(this.x>canvas.width)this.x=0;
+
+        if(this.y<0)this.y=canvas.height;
+        if(this.y>canvas.height)this.y=0;
 
     }
 
-  </script>
+    draw(){
+
+        ctx.beginPath();
+
+        ctx.arc(
+            this.x,
+            this.y,
+            this.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle="rgba(192,132,252,.55)";
+
+        ctx.fill();
+
+    }
+
+}
+
+for(let i=0;i<100;i++){
+
+    particles.push(new Particle());
+
+}
+
+function animateParticles(){
+
+    ctx.clearRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+    particles.forEach(p=>{
+
+        p.update();
+        p.draw();
+
+    });
+
+    for(let i=0;i<particles.length;i++){
+
+        for(let j=i+1;j<particles.length;j++){
+
+            const dx=particles[i].x-particles[j].x;
+            const dy=particles[i].y-particles[j].y;
+
+            const distance=Math.sqrt(dx*dx+dy*dy);
+
+            if(distance<105){
+
+                ctx.beginPath();
+
+                ctx.moveTo(
+                    particles[i].x,
+                    particles[i].y
+                );
+
+                ctx.lineTo(
+                    particles[j].x,
+                    particles[j].y
+                );
+
+                ctx.strokeStyle=
+                    `rgba(139,92,246,${(1-distance/105)*.15})`;
+
+                ctx.lineWidth=.6;
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+    requestAnimationFrame(animateParticles);
+
+}
+
+animateParticles();
+
+
+/* =====================================================
+   SCROLL ANIMATIONS
+===================================================== */
+
+const observer=new IntersectionObserver(
+(entries)=>{
+
+    entries.forEach(entry=>{
+
+        if(entry.isIntersecting){
+
+            entry.target.classList.add("visible");
+
+        }
+
+    });
+
+},
+{
+    threshold:.12
+});
+
+document
+.querySelectorAll(".reveal")
+.forEach(el=>observer.observe(el));
+
+
+/* =====================================================
+   DARK / LIGHT
+===================================================== */
+
+function toggleTheme(){
+
+    document.body.classList.toggle("light");
+
+    if(document.body.classList.contains("light")){
+
+        document.documentElement.style.setProperty(
+            "--bg",
+            "#faf7ff"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text",
+            "#241936"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted",
+            "#6f6680"
+        );
+
+    }else{
+
+        document.documentElement.style.setProperty(
+            "--bg",
+            "#080511"
+        );
+
+        document.documentElement.style.setProperty(
+            "--text",
+            "#f8f5ff"
+        );
+
+        document.documentElement.style.setProperty(
+            "--muted",
+            "#b7aec8"
+        );
+
+    }
+
+}
+
+</script>
 
 </body>
 </html>
